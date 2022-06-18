@@ -1,0 +1,80 @@
+$p-color: #029e74;
+$p-color-dark: #038763;
+
+$blue-background-color: #f8f9fa;
+
+// $p-color: #ff6162;
+// $p-color-dark: #d75656;
+
+@import "./navigation";
+@import "./home";
+@import "./footer";
+
+*,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+input,
+label {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  text-decoration: none;
+  list-style-type: none;
+
+  font-family: "Poppins", sans-serif;
+  color: rgba($color: #000000, $alpha: 0.9);
+  font-style: normal;
+  text-decoration: none;
+  list-style: none;
+  outline: none;
+}
+
+@media screen and (max-width: 480px) {
+}
+
+button {
+  background-color: $p-color;
+  padding: 0.45rem 1.5rem;
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+
+  border-radius: 2.5px;
+  border: 2px solid $p-color;
+  margin-left: 1rem;
+}
+
+button.btn-primary {
+  &:hover {
+    background-color: $p-color-dark;
+    border-color: $p-color-dark;
+  }
+}
+button.btn-secondary {
+  color: $p-color;
+  background: transparent;
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background-color: $p-color;
+    color: white;
+  }
+}
+
+a:hover {
+  h2,
+  span {
+    color: $p-color;
+    transition: all 0.2s ease;
+  }
+}
+
+.card-body {
+  padding: 1rem 0.5rem;
+}

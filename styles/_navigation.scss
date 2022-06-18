@@ -1,0 +1,132 @@
+.nav {
+  position: relative;
+  z-index: 99999999999999999;
+  padding: 0.75rem;
+  width: 100%;
+  height: 80px;
+
+  margin-bottom: 2rem;
+
+  position: sticky;
+  top: 0;
+  right: 0;
+  background: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+  .nav-container {
+    img {
+      height: 28px;
+    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  i {
+    display: none;
+    color: #282640;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 1rem 0 1rem 1rem;
+  }
+
+  .nav-link {
+    background-color: white;
+
+    a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      font-style: normal;
+      line-height: 1.25;
+      font-family: poppins;
+      margin: auto 0.75rem;
+
+      &:hover {
+        transition: all 0.2s ease-in-out;
+        color: $p-color;
+      }
+    }
+  }
+  button {
+    background-color: $p-color;
+    padding: 0.45rem 1.5rem;
+    color: white;
+    font-weight: 500;
+
+    border-radius: 2.5px;
+    border: 2px solid $p-color;
+    margin-left: 1rem;
+  }
+
+  button.btn-primary {
+    &:hover {
+      background-color: $p-color-dark;
+      border-color: $p-color-dark;
+    }
+  }
+  button.btn-secondary {
+    color: $p-color;
+    background: transparent;
+
+    &:hover {
+      transition: all 0.2s ease-in-out;
+      background-color: $p-color;
+      color: white;
+    }
+  }
+}
+
+.nav {
+  @media screen and (max-width: 1000px) {
+    i {
+      display: block;
+    }
+    .nav-link {
+      position: absolute;
+      top: 180px;
+      left: 0;
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      a {
+        font-size: 1rem;
+        line-height: 2rem;
+        letter-spacing: 0.5px;
+        color: #292640;
+        margin: 0 0 10px;
+        padding: 0.45rem 1rem;
+
+        width: 90%;
+        text-align: center;
+
+        &:hover {
+          background-color: #0000000a;
+        }
+      }
+    }
+    .nav-action-btn {
+      background-color: white;
+
+      position: absolute;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      padding: 2rem 1rem;
+
+      display: flex;
+      justify-content: center;
+      button {
+        width: 45%;
+        margin: 0 0.5rem;
+      }
+    }
+
+    .mobile-hide {
+      display: none !important;
+    }
+  }
+}

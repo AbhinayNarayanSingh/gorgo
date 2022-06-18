@@ -1,0 +1,35 @@
+footer {
+  .section-1 {
+    .row {
+      padding: 4rem 0 5rem;
+    }
+  }
+  .section-2 {
+    .row {
+      padding: 1rem 0;
+      display: flex;
+      justify-content: space-between;
+
+      .col-md-4 {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    p {
+      margin-top: 0.5rem;
+    }
+  }
+  h2 {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 2rem 0 1rem;
+  }
+  p {
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 18px;
+    font-size: 14px;
+  }
+}

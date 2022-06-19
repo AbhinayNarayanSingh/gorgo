@@ -2,18 +2,26 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Moment from "moment";
 import Head from "next/head";
+import Link from "next/link";
 
 import { postGetAction } from "../redux/features/homePage";
 
+// component
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
+
+// container
+import PostCardType1 from "../container/PostCardType1";
+import PostCardType2 from "../container/PostCardType2";
+import PopularPostSideBar from "../container/PopularPostSideBar";
+import BecomePro from "../container/BecomePro";
+import HeroFooter from "../container/HeroFooter";
 
 const index = () => {
   const { author } = useSelector((state) => state.authors);
   const { source } = useSelector((state) => state.sources);
   const { contentType } = useSelector((state) => state.contentTypes);
   const { hero, feature, post } = useSelector((state) => state.posts);
-
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const dispatch = useDispatch();
@@ -83,25 +91,7 @@ const index = () => {
               <div className="row">
                 {feature &&
                   feature.map((n, index) => {
-                    return (
-                      <div className="col-md-6" key={index}>
-                        <div className="card post-card-type-1">
-                          <div className="image-top">
-                            <img src={n.urlToImage} alt={n.title} />
-                          </div>
-                          <div className="card-body">
-                            <h2>{n.title.slice(0, 55).trim()}...</h2>
-                            <p>{n.description.slice(0, 100)}</p>
-                            <h5>
-                              <span>
-                                {n.author ? n.author : "Unknown"} <span></span>{" "}
-                                {Moment(n.publishedAt).format("LL")}
-                              </span>
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-                    );
+                    return <PostCardType1 n={n} key={index} />;
                   })}
               </div>
 
@@ -117,32 +107,12 @@ const index = () => {
               <div className="section-2">
                 {post &&
                   post.map((n, index) => {
-                    return (
-                      <div className="post-card-type-2" key={index}>
-                        <div className="row">
-                          <div className="col-md-3">
-                            <img src={n.urlToImage} alt="" />
-                          </div>
-
-                          <div className="col-md-9">
-                            <a href="/">
-                              <h2>{n.title.slice(0, 75).trim()}...</h2>
-                            </a>
-
-                            <h5>
-                              <span>
-                                {n.author ? n.author : "Unknown"} <span></span>{" "}
-                                {Moment(n.publishedAt).format("LL")}
-                              </span>
-                            </h5>
-                            <p>{n.description.slice(0, 200)}</p>
-                          </div>
-                        </div>
-                      </div>
-                    );
+                    return <PostCardType2 n={n} key={index} />;
                   })}
 
-                <button>View all community posts</button>
+                <Link href="/category/community">
+                  <button>View all community posts</button>
+                </Link>
               </div>
             </div>
 
@@ -170,37 +140,11 @@ const index = () => {
                   <h2>Popular Post</h2>
                 </div>
                 <div className="body">
-                  {hero.map((n, index) => {
-                    return (
-                      <div className="post-card-type-3 row" key={index}>
-                        <div className="col-3">
-                          <img src={n.urlToImage} alt={n.title} />
-                        </div>
-                        <div className="col-9">
-                          <a href="/">
-                            <h2>{`#${index + 1} ${n.title
-                              .trim()
-                              .slice(0, 50)}...`}</h2>
-                          </a>
-                          <h5>
-                            {" "}
-                            {n.author ? n.author : "Unknown"} |{" "}
-                            {Moment(n.publishedAt).format("LL")}
-                          </h5>
-                        </div>
-                      </div>
-                    );
-                  })}
+                  <PopularPostSideBar hero={hero} />
                 </div>
               </div>
 
-              <div className="sidebar-content-container">
-                <div className="become-pro-member">
-                  <h2>Become Pro </h2>
-                  <p>…and enjoy all the great benefits</p>
-                  <button>Upgrade now</button>
-                </div>
-              </div>
+              <BecomePro />
 
               <div className="source-card-container sidebar-content-container">
                 <div className="heading">
@@ -236,12 +180,12 @@ const index = () => {
           <div className="content-type-container">
             {contentType &&
               contentType.map((n) => (
-                <a href={`/post?category=${n.contentType}`} key={n.id}>
+                <Link href={`/category/${n.contentType}`} key={n.id}>
                   <div className="content-type">
                     <i className={`fa-solid ${n.i}`}></i>
                     <p>{n.contentType}</p>
                   </div>
-                </a>
+                </Link>
               ))}
           </div>
           <button>Discover now</button>
@@ -274,18 +218,11 @@ const index = () => {
           </div>
         </div>
       </div>
-      <div
-        className="section-5 container-fluid"
-        style={{ borderTop: ".5px solid grey" }}
-      >
-        <div className="container">
-          <h2>
-            Reading is essential for those who seek to rise{" "}
-            <span>above the ordinary</span>.
-          </h2>
-          <button>Get started</button>
-        </div>
-      </div>
+      <HeroFooter
+        h2="Reading is essential for those who seek to rise "
+        span="above the ordinary"
+        link="/"
+      />
       <Footer />
     </div>
   );

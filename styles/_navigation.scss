@@ -34,17 +34,20 @@
   .nav-link {
     background-color: white;
 
-    a {
+    li {
       font-size: 0.9rem;
       font-weight: 500;
-      font-style: normal;
       line-height: 1.25;
-      font-family: poppins;
       margin: auto 0.75rem;
+      text-transform: capitalize !important;
+      display: inline-block;
+      cursor: pointer;
 
       &:hover {
-        transition: all 0.2s ease-in-out;
-        color: $p-color;
+        a {
+          transition: all 0.2s ease-in-out;
+          color: $p-color;
+        }
       }
     }
   }
@@ -91,6 +94,13 @@
       display: flex;
       align-items: center;
       flex-direction: column;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+      }
 
       a {
         font-size: 1rem;

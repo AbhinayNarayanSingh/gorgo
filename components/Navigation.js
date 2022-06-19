@@ -1,45 +1,18 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import Link from "next/link";
 
 const Navigation = () => {
-  const data = [
-    {
-      id: 1,
-      name: "Home",
-      url: "/",
-    },
-    {
-      id: 2,
-      name: "Community",
-      url: "",
-    },
-    {
-      id: 3,
-      name: "Culture",
-      url: "",
-    },
-    {
-      id: 4,
-      name: "Design",
-      url: "",
-    },
-    {
-      id: 5,
-      name: "Food",
-      url: "",
-    },
-    {
-      id: 6,
-      name: "Other",
-      url: "",
-    },
-  ];
+  const { contentType } = useSelector((state) => state.contentTypes);
 
   const [navigationToggel, setNavigationToggel] = useState(true);
   return (
     <>
       <div className="container-fluid nav">
         <div className="container nav-container">
-          <img src="./img/logo.webp" alt="" />
+          <Link href="/">
+            <img src="../img/logo.webp" alt="" />
+          </Link>
 
           <i
             className={`fa-solid ${navigationToggel ? "fa-bars" : "fa-xmark"}`}
@@ -49,13 +22,18 @@ const Navigation = () => {
           ></i>
 
           <div className={`nav-link ${navigationToggel && `mobile-hide`}`}>
-            {data.map((n) => {
-              return (
-                <a href={n.url} key={n.id}>
-                  {n.name}
-                </a>
-              );
-            })}
+            <ul>
+              {contentType &&
+                contentType.map((n) => {
+                  return (
+                    <li key={n.id}>
+                      <Link href={"/category/" + n.contentType}>
+                        {n.contentType}
+                      </Link>
+                    </li>
+                  );
+                })}
+            </ul>
           </div>
 
           <div

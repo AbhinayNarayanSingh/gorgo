@@ -45,7 +45,10 @@ const Footer = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-4">
-              <img src="./img/favicon-gorgo-community-alternative.jpg" alt="" />
+              <img
+                src="../img/favicon-gorgo-community-alternative.jpg"
+                alt=""
+              />
             </div>
             <div className="col-md-4">
               <p>@2020 Appscrip</p>

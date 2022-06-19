@@ -1,14 +1,16 @@
 $p-color: #029e74;
 $p-color-dark: #038763;
-
 $blue-background-color: #f8f9fa;
+$font-family: "Frank Ruhl Libre", serif;
 
 // $p-color: #ff6162;
 // $p-color-dark: #d75656;
 
 @import "./navigation";
-@import "./home";
 @import "./footer";
+
+@import "./home";
+@import "./category";
 
 *,
 h1,
@@ -33,9 +35,6 @@ label {
   text-decoration: none;
   list-style: none;
   outline: none;
-}
-
-@media screen and (max-width: 480px) {
 }
 
 button {
@@ -77,4 +76,9 @@ a:hover {
 
 .card-body {
   padding: 1rem 0.5rem;
+}
+
+a,
+img {
+  cursor: pointer;
 }

@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Navigation = () => {
   const { contentType } = useSelector((state) => state.contentTypes);
 
   const [navigationToggel, setNavigationToggel] = useState(true);
+  const router = useRouter();
+  const category = router.query.category;
+
   return (
     <>
       <div className="container-fluid nav">
@@ -26,7 +30,17 @@ const Navigation = () => {
               {contentType &&
                 contentType.map((n) => {
                   return (
-                    <li key={n.id}>
+                    <li
+                      key={n.id}
+                      className={
+                        n.contentType === category ? "active-page" : ""
+                      }
+                      onClick={() =>
+                        setNavigationToggel(
+                          (navigationToggel) => !navigationToggel
+                        )
+                      }
+                    >
                       <Link href={"/category/" + n.contentType}>
                         {n.contentType}
                       </Link>

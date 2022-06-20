@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Moment from "moment";
-import Head from "next/head";
 import Link from "next/link";
 
-import { postGetAction } from "../redux/features/homePage";
+import { postGetAction } from "../redux/actions/homePageActions";
 
 // component
 import Footer from "../components/Footer";
@@ -16,13 +15,16 @@ import PostCardType2 from "../container/PostCardType2";
 import PopularPostSideBar from "../container/PopularPostSideBar";
 import BecomePro from "../container/BecomePro";
 import HeroFooter from "../container/HeroFooter";
+import Header from "../components/Header";
+import CategoryContainer from "../container/CategoryContainer";
 
 const index = () => {
   const { author } = useSelector((state) => state.authors);
   const { source } = useSelector((state) => state.sources);
   const { contentType } = useSelector((state) => state.contentTypes);
-  const { hero, feature, post } = useSelector((state) => state.posts);
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  const { hero, feature, post } = useSelector((state) => state.posts);
 
   const dispatch = useDispatch();
 
@@ -31,10 +33,7 @@ const index = () => {
   }, [dispatch]);
   return (
     <div id="home_page">
-      <Head>
-        <title>Home - Gorgo</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+      <Header />
       <Navigation />
       <div className="container">
         <div className="hero-image-container">
@@ -120,18 +119,7 @@ const index = () => {
               <div className="category-container sidebar-content-container">
                 {contentType &&
                   contentType.map((n) => {
-                    return (
-                      <div className="category" key={n.id}>
-                        <img
-                          src="https://cdn.shopify.com/s/files/1/2309/6853/products/Artboard_3_1200x1200.jpg?v=1578499695"
-                          alt={n.contentType}
-                        />
-                        <div className="body">
-                          <i className={`fa-solid ${n.i}`}></i>
-                          <h2>{n.contentType}</h2>
-                        </div>
-                      </div>
-                    );
+                    return <CategoryContainer n={n} key={n.id} />;
                   })}
               </div>
 

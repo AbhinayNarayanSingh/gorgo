@@ -4,7 +4,7 @@ const PostCardType1 = ({ n }) => {
   const blankImgae =
     "https://us.123rf.com/450wm/koblizeek/koblizeek1902/koblizeek190200055/125337077-no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment-.jpg?ver=6";
   return (
-    <div className="col-md-6" >
+    <div className="col-md-6">
       <div className="card post-card-type-1">
         <div className="image-top">
           <img src={n.urlToImage || blankImgae} alt={n.title} />

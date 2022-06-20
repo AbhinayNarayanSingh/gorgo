@@ -11,28 +11,29 @@ import PostCardType2 from "../../container/PostCardType2";
 import PopularPostSideBar from "../../container/PopularPostSideBar";
 import BecomePro from "../../container/BecomePro";
 import HeroFooter from "../../container/HeroFooter";
-import { postGetAction } from "../../redux/features/homePage";
+import { categoryPostGETAction } from "../../redux/actions/categoryPageAction";
+import Header from "../../components/Header";
+import CategoryContainer from "../../container/CategoryContainer";
 
 const Category = () => {
   const router = useRouter();
   const category = router.query.category;
 
-  const { hero, feature, post } = useSelector((state) => state.posts);
+  const { hero, post } = useSelector((state) => state.categoryPost);
+  const { contentType } = useSelector((state) => state.contentTypes);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    window.scrollTo({
-      top: "0px",
-      left: "0px",
-      behavior: "smooth",
-    });
-    // dispatch(postGetAction());
-  }, []);
-  // }, [dispatch]);
+    if (category) {
+      dispatch(categoryPostGETAction(category));
+    }
+  }, [dispatch, category]);
 
   return (
     <div>
+      <Header title={`${category} - Gorge`} />
+
       <Navigation />
 
       <div className="container">
@@ -47,10 +48,17 @@ const Category = () => {
           <div className="col-md-8">
             {post &&
               post.map((n, index) => {
-                return <PostCardType2 n={n} index={index} />;
+                return <PostCardType2 n={n} index={index} key={index} />;
               })}
           </div>
           <div className="col-md-4">
+            <div className="category-container sidebar-content-container">
+              {contentType &&
+                contentType.map((n, index) => {
+                  return <CategoryContainer n={n} key={index} />;
+                })}
+            </div>
+
             <BecomePro />
             <div className="popular-post-container sidebar-content-container">
               <div className="heading">

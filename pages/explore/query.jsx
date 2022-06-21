@@ -12,7 +12,7 @@ import CategoryContainer from "../../container/CategoryContainer";
 import BecomePro from "../../container/BecomePro";
 import { searchPostGETAction } from "../../redux/actions/searchPageAction";
 
-const search = () => {
+const SearchQuery = () => {
   const router = useRouter();
   const slug = router.query.search;
   const { post } = useSelector((state) => state.searchPost);
@@ -86,4 +86,4 @@ const search = () => {
   );
 };
 
-export default search;
+export default SearchQuery;

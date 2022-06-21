@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Moment from "moment";
 import Link from "next/link";
 
-import { postGetAction } from "../redux/actions/homePageActions";
+import { homePagePostGETAction } from "../redux/actions/homePageActions";
 
 // component
 import Footer from "../components/Footer";
@@ -17,8 +16,10 @@ import BecomePro from "../container/BecomePro";
 import HeroFooter from "../container/HeroFooter";
 import Header from "../components/Header";
 import CategoryContainer from "../container/CategoryContainer";
+import AuthorCard from "../container/AuthorCard";
+import HeroCardSlider from "../container/HeroCardSlider";
 
-const index = () => {
+const Home = () => {
   const { author } = useSelector((state) => state.authors);
   const { source } = useSelector((state) => state.sources);
   const { contentType } = useSelector((state) => state.contentTypes);
@@ -29,7 +30,7 @@ const index = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(postGetAction());
+    dispatch(homePagePostGETAction());
   }, [dispatch]);
   return (
     <div id="home_page">
@@ -60,24 +61,12 @@ const index = () => {
             {hero &&
               hero.map((n, index) => {
                 return (
-                  <div
-                    className={`hero-slider ${
-                      currentSlide === index ? "active" : "non-active"
-                    }`}
+                  <HeroCardSlider
+                    n={n}
                     key={index}
-                  >
-                    <div className="img-container">
-                      <img src={n.urlToImage} alt="" />
-                    </div>
-
-                    <div className="hero-text">
-                      <p>
-                        {n.author ? n.author : "Unknown"} <span></span>{" "}
-                        {Moment(n.publishedAt).format("LL")}
-                      </p>
-                      <h2>{n.title}</h2>
-                    </div>
-                  </div>
+                    index={index}
+                    currentSlide={currentSlide}
+                  />
                 );
               })}
           </div>
@@ -190,20 +179,8 @@ const index = () => {
           </p>
           <div className="row">
             {author &&
-              author.map((n) => {
-                return (
-                  <div className="col-6 col-md-3" key={n.id}>
-                    <div className="authors-list">
-                      <img
-                        src="https://us.123rf.com/450wm/apoev/apoev1902/apoev190200141/125038134-person-gray-photo-placeholder-man-in-a-costume-on-gray-background.jpg?ver=6"
-                        alt={n.name}
-                      />
-                      <a href="/">
-                        <h2>{n.name}</h2>
-                      </a>
-                    </div>
-                  </div>
-                );
+              author.map((n, index) => {
+                return <AuthorCard n={n} key={index} />;
               })}
           </div>
         </div>
@@ -218,4 +195,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Home;

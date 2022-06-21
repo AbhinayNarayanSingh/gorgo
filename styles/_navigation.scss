@@ -14,8 +14,13 @@
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
   .nav-container {
-    img {
+    .img-container {
       height: 28px;
+
+      img {
+        height: 28px;
+        width: auto;
+      }
     }
     display: flex;
     justify-content: space-between;

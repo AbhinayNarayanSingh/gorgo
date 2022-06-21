@@ -1,0 +1,914 @@
+.nav {
+  position: relative;
+  z-index: 100000000000000020;
+  padding: 0.75rem;
+  width: 100%;
+  height: 80px;
+  margin-bottom: 2rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  right: 0;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.nav .nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav .nav-container .img-container {
+  height: 28px;
+}
+.nav .nav-container .img-container img {
+  height: 28px;
+  width: auto;
+}
+.nav i {
+  display: none;
+  color: #282640;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 1rem 0 1rem 1rem;
+}
+.nav i.fa-magnifying-glass {
+  display: inline-flex;
+  justify-content: center;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+.nav i.fa-magnifying-glass:hover {
+  color: #029e74;
+}
+@media screen and (max-width: 1250px) {
+  .nav i.fa-magnifying-glass {
+    display: none;
+  }
+}
+.nav .nav-link {
+  background-color: white;
+}
+.nav .nav-link ul {
+  margin: 0;
+}
+.nav .nav-link li {
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.25;
+  margin: auto 0.75rem;
+  text-transform: capitalize !important;
+  display: inline-block;
+  cursor: pointer;
+}
+.nav .nav-link li:hover a {
+  transition: all 0.2s ease-in-out;
+  color: #029e74;
+}
+.nav .nav-link .active-page a {
+  color: #029e74;
+}
+.nav button {
+  background-color: #029e74;
+  padding: 0.45rem 1.5rem;
+  color: white;
+  font-weight: 500;
+  border-radius: 2.5px;
+  border: 2px solid #029e74;
+  margin-left: 1rem;
+}
+.nav button.btn-primary:hover {
+  background-color: #038763;
+  border-color: #038763;
+}
+.nav button.btn-secondary {
+  color: #029e74;
+  background: transparent;
+}
+.nav button.btn-secondary:hover {
+  transition: all 0.2s ease-in-out;
+  background-color: #029e74;
+  color: white;
+}
+
+@media screen and (max-width: 1250px) {
+  .nav i {
+    display: block;
+  }
+  .nav .nav-link {
+    position: absolute;
+    top: 180px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: rgba(1, 1, 1, 0.7803921569) 0px 5px 15px -1px;
+    border-radius: 0px 0 16px 16px;
+  }
+  .nav .nav-link ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+  }
+  .nav .nav-link a {
+    font-size: 1rem;
+    line-height: 2rem;
+    letter-spacing: 0.5px;
+    color: #292640;
+    margin: 0 0 10px;
+    padding: 0.45rem 1rem;
+    width: 90%;
+    text-align: center;
+  }
+  .nav .nav-link a:hover {
+    background-color: rgba(0, 0, 0, 0.0392156863);
+  }
+  .nav .nav-action-btn {
+    background-color: white;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  .nav .nav-action-btn button {
+    width: 45%;
+    margin: 0 0.5rem;
+  }
+  .nav .mobile-hide {
+    display: none !important;
+  }
+}
+
+footer .section-1 .row {
+  padding: 4rem 0 5rem;
+}
+footer .section-2 .row {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+footer .section-2 .row .col-md-4 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+footer .section-2 p {
+  margin-top: 0.5rem;
+}
+footer h2 {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 2rem 0 1rem;
+}
+footer p {
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 18px;
+  font-size: 14px;
+}
+
+#home_page .hero-image-container {
+  position: relative;
+}
+#home_page .hero-image-container .hero-slider-container {
+  position: relative;
+  height: 400px;
+  width: 100%;
+}
+#home_page .hero-image-container .hero-slider-container .hero-slider {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+#home_page .hero-image-container .hero-slider-container .hero-slider.non-active {
+  display: none;
+}
+#home_page .hero-image-container .img-container {
+  overflow: hidden;
+}
+#home_page .hero-image-container .img-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(40, 40, 40, 0) 0%, rgba(15, 15, 15, 0.91) 89%, rgba(15, 15, 15, 0.93) 93%);
+}
+#home_page .hero-image-container .img-container img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 400px;
+}
+#home_page .hero-image-container .hero-text {
+  position: absolute;
+  bottom: 0;
+  padding: 1rem 2rem;
+}
+#home_page .hero-image-container .hero-text h2 {
+  font-size: 1.5rem;
+  color: white;
+}
+#home_page .hero-image-container .hero-text p {
+  color: white;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+#home_page .hero-image-container .hero-text p span {
+  width: 5px;
+  height: 5px;
+  background-color: white;
+  display: block;
+  border-radius: 10px;
+  margin: 0 1rem;
+}
+@media screen and (max-width: 480px) {
+  #home_page .hero-image-container .hero-text {
+    padding: 1rem 1rem;
+  }
+  #home_page .hero-image-container .hero-text h2 {
+    font-size: 1.2rem;
+  }
+  #home_page .hero-image-container .hero-text p {
+    font-size: 0.8rem;
+  }
+  #home_page .hero-image-container .hero-text p span {
+    margin: 0 0.7rem;
+  }
+}
+#home_page .hero-image-container .slider-toggel-btn {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+#home_page .hero-image-container .slider-toggel-btn i {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 1rem;
+  border-radius: 2rem 0 0 2rem;
+  opacity: 0.25;
+}
+#home_page .hero-image-container .slider-toggel-btn i:nth-of-type(1) {
+  border-radius: 0 2rem 2rem 0;
+}
+#home_page .hero-image-container .slider-toggel-btn i:hover {
+  opacity: 1;
+}
+#home_page .main {
+  margin-top: 1rem;
+  background-color: #f8f9fa;
+}
+#home_page .main .section-1 {
+  padding-top: 1rem;
+}
+#home_page .main .section-1 .card {
+  background: transparent;
+  border: none;
+}
+#home_page .main h2 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 140%;
+}
+#home_page .main p {
+  margin-top: 0.25rem;
+  font-size: 14px;
+  line-height: 20px;
+  color: grey;
+}
+#home_page .main h5 {
+  margin-top: 0.25rem;
+  font-size: 12px;
+  line-height: 20px;
+  color: grey;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#home_page .main h5 span {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 12px;
+  line-height: 20px;
+}
+#home_page .main h5 span span {
+  margin: 0 0.25rem;
+  width: 5px;
+  height: 5px;
+  background-color: rgba(0, 0, 0, 0.796);
+  display: block;
+  border-radius: 10px;
+  margin: 0 0.5rem;
+}
+#home_page .post-card-type-1 {
+  margin-bottom: 1rem;
+}
+#home_page .post-card-type-1 img {
+  height: 250px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 2px;
+}
+#home_page .promotion-cover-banner {
+  background-color: #f0f1f2;
+  padding: 4rem;
+  margin: 1rem 0 2rem;
+}
+#home_page .promotion-cover-banner h2 {
+  font-family: "Frank Ruhl Libre", serif;
+  font-weight: 800;
+  font-size: 1.75rem;
+}
+#home_page .promotion-cover-banner p {
+  color: gray;
+  line-height: 1.5rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+#home_page .promotion-cover-banner button {
+  margin: 0;
+  margin-top: 1rem;
+}
+@media screen and (max-width: 480px) {
+  #home_page .promotion-cover-banner {
+    padding: 2rem 1rem;
+  }
+}
+#home_page .section-2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: 1rem;
+}
+#home_page .section-2 button {
+  background-color: white;
+  color: grey;
+  border: 1px solid grey !important;
+  width: 100%;
+  margin: 0;
+  margin: 2rem 0;
+}
+#home_page .section-2 button:hover {
+  color: black;
+  border-color: black;
+  transition: ease 2s;
+}
+#home_page .source-card-container .body .source-container {
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+#home_page .source-card-container .body .source {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0.5rem;
+}
+#home_page .source-card-container .body .source i {
+  font-size: 1.5rem;
+  margin-right: 2rem;
+}
+#home_page .source-card-container .body .source h2 {
+  font-size: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+#home_page .focus-content {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#home_page .focus-content h2 {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 3.5rem;
+}
+#home_page .focus-content p {
+  margin-top: 0.5rem;
+  color: #818181;
+}
+#home_page .focus-content p span {
+  color: #029e74;
+}
+#home_page .focus-content button {
+  margin-top: 1rem;
+}
+#home_page .focus-content .content-type-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 2rem;
+}
+#home_page .focus-content .content-type {
+  margin: 0.5rem;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 0.5rem 1rem;
+}
+#home_page .focus-content .content-type p {
+  margin: 0;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+#home_page .focus-content .content-type i {
+  color: #029e74;
+  padding: 0.5rem;
+  background-color: #cbede4;
+  border-radius: 100px;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;
+  margin-right: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#home_page .focus-content .content-type:hover {
+  background-color: #029e74;
+}
+#home_page .focus-content .content-type:hover p {
+  color: white;
+}
+@media screen and (max-width: 800px) {
+  #home_page .focus-content {
+    padding: 3rem 0;
+  }
+  #home_page .focus-content h2 {
+    font-size: 2.1rem;
+  }
+  #home_page .focus-content p {
+    font-size: 14px;
+  }
+  #home_page .focus-content .content-type-container {
+    margin: 2rem 0;
+  }
+  #home_page .focus-content .content-type-container .content-type {
+    margin: 0.5rem;
+    padding: 0.5rem 0.5rem;
+  }
+  #home_page .focus-content .content-type-container .content-type p {
+    font-size: 12px;
+  }
+  #home_page .focus-content .content-type-container .content-type i {
+    padding: 0.25rem;
+    border-radius: 100px;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.75rem;
+    margin-right: 0.5rem;
+  }
+}
+#home_page .section-4 {
+  background-color: white;
+}
+#home_page .section-4 .container {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#home_page .section-4 .container h2 {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 3.5rem;
+  text-align: center;
+}
+#home_page .section-4 .container p {
+  margin-top: 0.5rem;
+  color: #818181;
+}
+#home_page .section-4 .container p span {
+  color: #029e74;
+}
+#home_page .section-4 .container .row {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+}
+#home_page .section-4 .container .authors-list {
+  cursor: pointer;
+  padding: 1.5rem 0;
+  margin: 0.75rem auto;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#home_page .section-4 .container .authors-list img {
+  height: 75px;
+  width: 75px;
+  border-radius: 75px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#home_page .section-4 .container .authors-list h2 {
+  font-family: poppins;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+@media screen and (max-width: 800px) {
+  #home_page .section-4 .container {
+    padding: 3rem 1rem;
+  }
+  #home_page .section-4 .container h2 {
+    font-size: 2.1rem;
+  }
+  #home_page .section-4 .container p {
+    font-size: 14px;
+  }
+}
+
+.section-5 .container {
+  padding: 6rem 4rem;
+  text-align: center;
+}
+.section-5 .container h2 {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 3.5rem;
+}
+.section-5 .container h2 span {
+  font-family: "Frank Ruhl Libre", serif;
+  color: #029e74;
+}
+.section-5 .container button {
+  margin-top: 3rem;
+  padding: 0.75rem 4rem;
+}
+@media screen and (max-width: 800px) {
+  .section-5 .container {
+    padding: 6rem 0rem;
+  }
+  .section-5 .container h2 {
+    font-size: 2rem;
+  }
+  .section-5 .container button {
+    padding: 0.6rem 3rem;
+  }
+}
+
+.sidebar-content-container {
+  padding: 1rem;
+  background-color: white;
+  margin-bottom: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.sidebar-content-container .heading {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(27, 31, 35, 0.15);
+}
+.sidebar-content-container .heading h2 {
+  font-size: 1rem;
+}
+
+.become-pro-member {
+  background-color: rgba(2, 158, 116, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 0;
+}
+.become-pro-member h2 {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 2rem;
+}
+.become-pro-member button {
+  margin-top: 1rem;
+}
+.become-pro-member p {
+  margin: 0 1rem;
+  text-align: center;
+}
+
+h5 {
+  margin-top: 0.25rem;
+  font-size: 12px;
+  line-height: 20px;
+  color: grey !important;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+h5 span {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 12px;
+  line-height: 20px;
+  color: rgba(128, 128, 128, 0.75);
+}
+h5 span span {
+  margin: 0 0.25rem;
+  width: 5px;
+  height: 5px;
+  background-color: rgba(128, 128, 128, 0.75) !important;
+  display: block;
+  border-radius: 10px;
+  margin: 0 0.5rem;
+}
+.post-card-type-3 {
+  margin: 1rem 0;
+}
+.post-card-type-3 img {
+  width: 100%;
+  height: 70px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 2px;
+}
+.post-card-type-3 h2 {
+  font-size: 14px !important;
+  line-height: 20px;
+}
+
+.post-card-type-2 {
+  margin-bottom: 2rem;
+}
+.post-card-type-2 img {
+  height: 200px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 2px;
+}
+.post-card-type-2 p {
+  color: grey;
+}
+@media screen and (min-width: 800px) {
+  .post-card-type-2 h2 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+  .post-card-type-2 h5 {
+    margin: 0.5rem 0;
+  }
+  .post-card-type-2 p {
+    margin: 0.5rem auto;
+  }
+}
+@media screen and (max-width: 480px) {
+  .post-card-type-2 p {
+    font-size: 12px;
+    line-height: 125%;
+    font-weight: 400;
+  }
+  .post-card-type-2 h2 {
+    font-size: 1rem;
+  }
+  .post-card-type-2 img {
+    height: 110px;
+    height: 175px;
+    margin-bottom: 1rem;
+  }
+}
+
+.category-container .category {
+  margin: 2px;
+  position: relative;
+  height: 100px;
+}
+.category-container .category img {
+  height: 100px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.category-container .category .body {
+  width: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6980392157);
+  height: 100px;
+  z-index: 999;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.category-container .category .body:hover {
+  background-color: #029e74;
+}
+.category-container .category .body h2 {
+  color: white;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 1rem;
+  margin-top: 5px;
+}
+.category-container .category .body i {
+  color: white;
+  font-size: 1rem;
+  border: 2px solid white;
+  padding: 0.75rem;
+  border-radius: 100px;
+}
+.category-container .category.active .body {
+  background-color: #029e74 !important;
+}
+
+.category-hero {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  margin-bottom: 1rem;
+}
+.category-hero h1 {
+  text-transform: capitalize;
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 3rem;
+}
+.category-hero p {
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 16px;
+  line-height: 125%;
+  margin: 0.5rem 0 1.5rem;
+}
+@media screen and (max-width: 800px) {
+  .category-hero h1 {
+    font-size: 2rem;
+  }
+  .category-hero p {
+    font-size: 14px;
+  }
+}
+
+.search-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5rem 0 10rem;
+}
+.search-page h1 {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 5rem;
+  text-align: center;
+  color: #029e74;
+  padding: 2rem 0;
+}
+.search-page form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.search-page form button {
+  margin: 0;
+  width: 150px;
+  margin-top: 2rem;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.form-input label {
+  font-size: 14px;
+  margin-bottom: 0.4rem;
+}
+.form-input input {
+  border: 1px solid whitesmoke;
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+}
+.form-input input:active, .form-input input:focus {
+  border-color: #029e74;
+}
+
+.search-form {
+  margin-bottom: 2rem;
+}
+@media screen and (max-width: 480px) {
+  .search-form button {
+    margin-top: 1rem;
+  }
+}
+
+.sign-form input {
+  margin-bottom: 1rem;
+}
+
+.sign-container {
+  margin: 5rem auto;
+  margin-top: 1rem;
+}
+.sign-container button {
+  margin-top: 1rem;
+  width: 100%;
+}
+.sign-container h1 {
+  font-family: "Frank Ruhl Libre", serif;
+  text-align: center;
+  font-size: 3rem;
+  margin: 0 0 2rem;
+}
+
+*,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+input,
+label {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  text-decoration: none;
+  list-style-type: none;
+  font-family: "Poppins", sans-serif;
+  color: rgba(0, 0, 0, 0.9);
+  font-style: normal;
+  text-decoration: none;
+  list-style: none;
+  outline: none;
+}
+
+button {
+  background-color: #029e74;
+  padding: 0.45rem 1.5rem;
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 2.5px;
+  border: 2px solid #029e74;
+}
+
+button.btn-primary:hover {
+  background-color: #038763;
+  border-color: #038763;
+}
+
+button.btn-secondary {
+  color: #029e74;
+  background: transparent;
+}
+button.btn-secondary:hover {
+  transition: all 0.2s ease-in-out;
+  background-color: #029e74;
+  color: white;
+}
+
+a:hover h2,
+a:hover span {
+  color: #029e74;
+  transition: all 0.2s ease;
+}
+
+.card-body {
+  padding: 1rem 0.5rem;
+}
+
+a,
+img {
+  cursor: pointer;
+}
+
+.alert-popup {
+  position: fixed;
+  z-index: 999999;
+  bottom: 0;
+  background-color: #ff9494;
+  margin-bottom: 1rem;
+  padding: 0.25rem 1rem;
+  display: none;
+}
+.alert-popup p {
+  font-size: 12px;
+}
+.alert-popup p span {
+  font-weight: 500;
+}
+
+.alert-popup.active {
+  display: block;
+}

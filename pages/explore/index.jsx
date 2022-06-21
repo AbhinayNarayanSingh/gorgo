@@ -5,7 +5,7 @@ import Header from "../../components/Header";
 import Input from "../../components/Input";
 import Navigation from "../../components/Navigation";
 
-const search = () => {
+const Search = () => {
   const [query, setQuery] = useState("");
   const router = useRouter();
 
@@ -43,4 +43,4 @@ const search = () => {
   );
 };
 
-export default search;
+export default Search;

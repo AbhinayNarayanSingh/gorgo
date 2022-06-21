@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const Footer = () => {
@@ -45,9 +46,11 @@ const Footer = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-4">
-              <img
-                src="../img/favicon-gorgo-community-alternative.jpg"
+              <Image
+                src="/img/favicon-gorgo-community-alternative.jpg"
                 alt=""
+                height={30}
+                width={30}
               />
             </div>
             <div className="col-md-4">

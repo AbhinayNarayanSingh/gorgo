@@ -1,7 +1,7 @@
+import axios from "axios";
+import { newsapi, API_KEY } from "../var";
 import * as constant from "../constants/homePageConstants";
 import { takeEvery, call, put } from "redux-saga/effects";
-import { newsapi, API_KEY } from "../var";
-import axios from "axios";
 
 const config = {
   headers: {

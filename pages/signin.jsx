@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import Moment from "moment";
-import Link from "next/link";
+import { useDispatch } from "react-redux";
 
 // component
 import Footer from "../components/Footer";
@@ -10,10 +8,9 @@ import Input from "../components/Input";
 
 // container
 
-import HeroFooter from "../container/HeroFooter";
 import Header from "../components/Header";
 
-const index = () => {
+const SignIn = () => {
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
@@ -57,4 +54,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default SignIn;

@@ -21,7 +21,7 @@ const PostCardType2 = ({ n }) => {
               {Moment(n.publishedAt).format("LL")}
             </span>
           </h5>
-          <p>{n.description.slice(0, 200)}</p>
+          <p>{n.description && n.description.slice(0, 200)}</p>
         </div>
       </div>
     </div>

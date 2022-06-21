@@ -11,7 +11,7 @@ const PostCardType1 = ({ n }) => {
         </div>
         <div className="card-body">
           <h2>{n.title.slice(0, 55).trim()}...</h2>
-          <p>{n.description.slice(0, 100)}</p>
+          <p>{n.description && n.description.slice(0, 100)}</p>
           <h5>
             <span>
               {n.author ? n.author : "Unknown"} <span></span>{" "}

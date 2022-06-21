@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Alert from "../hoc/Alert";
+import Image from "next/image";
 
 const Navigation = () => {
   const { contentType } = useSelector((state) => state.contentTypes);
@@ -16,8 +17,8 @@ const Navigation = () => {
       <Alert />
       <div className="container-fluid nav">
         <div className="container nav-container">
-          <Link href="/">
-            <img src="../img/logo.webp" alt="" />
+          <Link href="/" className="img-container">
+            <Image src="/img/logo.webp" alt="" height={28} width={"100%"} />
           </Link>
 
           <i

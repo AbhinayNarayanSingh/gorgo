@@ -1,6 +1,8 @@
 import axios from "axios";
 import { newsapi, API_KEY } from "../var";
 import * as constant from "../constants/homePageConstants";
+import { alertAction } from "./alertAction";
+import { useDispatch } from "react-redux";
 
 const config = {
   headers: {
@@ -23,6 +25,7 @@ export const postGetAction = () => async (dispatch) => {
       payload: data["articles"],
     });
   } catch (error) {
+    dispatch(alertAction(error.message));
     dispatch({ type: constant.HERO_POST_GET_FAIL, payload: error.message });
   }
 
@@ -40,6 +43,8 @@ export const postGetAction = () => async (dispatch) => {
       payload: data["articles"],
     });
   } catch (error) {
+    dispatch(alertAction(error.message));
+
     dispatch({ type: constant.FEATURE_POST_GET_FAIL, payload: error.message });
   }
 
@@ -57,6 +62,8 @@ export const postGetAction = () => async (dispatch) => {
       payload: data["articles"],
     });
   } catch (error) {
+    dispatch(alertAction(error.message));
+
     dispatch({ type: constant.POST_GET_FAIL, payload: error.message });
   }
 };

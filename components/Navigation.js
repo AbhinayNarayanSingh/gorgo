@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Alert from "../hoc/Alert";
 
 const Navigation = () => {
   const { contentType } = useSelector((state) => state.contentTypes);
@@ -12,6 +13,7 @@ const Navigation = () => {
 
   return (
     <>
+      <Alert />
       <div className="container-fluid nav">
         <div className="container nav-container">
           <Link href="/">
@@ -53,8 +55,22 @@ const Navigation = () => {
           <div
             className={`nav-action-btn ${navigationToggel && `mobile-hide`}`}
           >
-            <button className="btn-secondary">Login</button>
-            <button className="btn-primary">Register</button>
+            <i
+              className="fa-solid fa-magnifying-glass"
+              onClick={() => router.push("/explore")}
+            ></i>
+            <button
+              className="btn-secondary"
+              onClick={() => router.push("/signin")}
+            >
+              Login
+            </button>
+            <button
+              className="btn-primary"
+              onClick={() => router.push("/signup")}
+            >
+              Register
+            </button>
           </div>
         </div>
       </div>

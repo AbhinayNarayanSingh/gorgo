@@ -176,7 +176,9 @@ const index = () => {
                 </Link>
               ))}
           </div>
-          <button>Discover now</button>
+          <Link href="/explore">
+            <button>Discover now</button>
+          </Link>
         </div>
       </div>
 

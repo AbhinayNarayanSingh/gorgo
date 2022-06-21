@@ -30,6 +30,21 @@
     padding: 1rem 0 1rem 1rem;
   }
 
+  i.fa-magnifying-glass {
+    display: inline-flex;
+    justify-content: center;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    &:hover {
+      color: $p-color;
+    }
+
+    @media screen and (max-width: 1250px) {
+      display: none;
+    }
+  }
   .nav-link {
     background-color: white;
 
@@ -88,7 +103,7 @@
 }
 
 .nav {
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1250px) {
     i {
       display: block;
     }
@@ -101,6 +116,9 @@
       display: flex;
       align-items: center;
       flex-direction: column;
+
+      box-shadow: #010101c7 0px 5px 15px -1px;
+      border-radius: 0px 0 16px 16px;
 
       ul {
         display: flex;

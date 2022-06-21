@@ -15,6 +15,7 @@ $p: #90a1b7;
 
 @import "./home";
 @import "./category";
+@import "./form";
 
 *,
 h1,
@@ -50,7 +51,6 @@ button {
 
   border-radius: 2.5px;
   border: 2px solid $p-color;
-  margin-left: 1rem;
 }
 
 button.btn-primary {
@@ -85,4 +85,24 @@ a:hover {
 a,
 img {
   cursor: pointer;
+}
+
+.alert-popup {
+  position: fixed;
+  z-index: 999999;
+  bottom: 0;
+  background-color: #ff9494;
+  margin-bottom: 1rem;
+  padding: 0.25rem 1rem;
+
+  p {
+    font-size: 12px;
+    span {
+      font-weight: 500;
+    }
+  }
+  display: none;
+}
+.alert-popup.active {
+  display: block;
 }

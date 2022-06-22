@@ -98,8 +98,8 @@ const Home = () => {
                     return <PostCardType2 n={n} key={index} />;
                   })}
 
-                <Link href="/category/community">
-                  <button>View all community posts</button>
+                <Link href="/category/business">
+                  <button>View all </button>
                 </Link>
               </div>
             </div>

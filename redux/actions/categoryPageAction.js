@@ -1,30 +1,23 @@
-import axios from "axios";
-import { newsapi, API_KEY } from "../var";
 import * as constant from "../constants/homePageConstants";
 import { takeEvery, call, put } from "redux-saga/effects";
-
-const config = {
-  headers: {
-    "Content-Type": "application/json",
-  },
-};
+import { get } from "../../utils/request";
 
 // Action
-export const categoryPostGETAction = (cat) => {
-  return { type: "GET_CATEGORY_POST", cat };
+export const categoryPostGETAction = (cat, limit) => {
+  return { type: "GET_CATEGORY_POST", cat, limit };
 };
 
 export function* watchCategoryPostGET() {
   yield takeEvery("GET_CATEGORY_POST", workerCategoryPostGET);
 }
 
-export function* workerCategoryPostGET({ cat }) {
+export function* workerCategoryPostGET({ cat, limit }) {
   try {
     yield put({ type: constant.CATEGORY_POST_GET_INITIATE });
+
     const { data } = yield call(() => {
-      return axios.get(
-        `${newsapi}top-headlines?language=en&category=${cat}&pageSize=10&sortBy=popularity&apiKey=${API_KEY}`,
-        config
+      return get(
+        `top-headlines?language=en&category=${cat}&pageSize=10&page=${limit}&sortBy=popularity`
       );
     });
 
@@ -34,9 +27,8 @@ export function* workerCategoryPostGET({ cat }) {
     });
 
     const res = yield call(() => {
-      return axios.get(
-        `${newsapi}top-headlines?language=en&pageSize=10&country=in&sortBy=popularity&apiKey=${API_KEY}`,
-        config
+      return get(
+        "top-headlines?language=en&pageSize=10&country=in&sortBy=popularity"
       );
     });
 

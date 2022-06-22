@@ -1,13 +1,6 @@
 import * as constant from "../constants/homePageConstants";
 import { takeEvery, call, put } from "redux-saga/effects";
-import { newsapi, API_KEY } from "../var";
-import axios from "axios";
-
-const config = {
-  headers: {
-    "Content-Type": "application/json",
-  },
-};
+import { get } from "../../utils/request";
 
 // Action
 export const searchPostGETAction = (query) => {
@@ -22,9 +15,8 @@ export function* workerSearchPostGET({ query }) {
   try {
     yield put({ type: constant.SEARCH_POST_GET_INITIATE });
     const { data } = yield call(() => {
-      return axios.get(
-        `${newsapi}everything?q=${query}&language=en&pageSize=10&sortBy=popularity&apiKey=${API_KEY}`,
-        config
+      return get(
+        `everything?q=${query}&language=en&pageSize=10&sortBy=popularity`
       );
     });
 

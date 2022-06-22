@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -21,14 +21,19 @@ const Category = () => {
 
   const { hero, post } = useSelector((state) => state.categoryPost);
   const { contentType } = useSelector((state) => state.contentTypes);
+  const [limit, setLimit] = useState(1);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
+    setLimit(1);
+  }, [category]);
+
+  useEffect(() => {
     if (category) {
-      dispatch(categoryPostGETAction(category));
+      dispatch(categoryPostGETAction(category, limit));
     }
-  }, [dispatch, category]);
+  }, [dispatch, category, limit]);
 
   return (
     <div>
@@ -50,6 +55,15 @@ const Category = () => {
               post.map((n, index) => {
                 return <PostCardType2 n={n} index={index} key={index} />;
               })}
+
+            <button
+              onClick={() => {
+                setLimit((limit) => limit + 1);
+              }}
+              style={{ marginBottom: "2rem" }}
+            >
+              Next Page
+            </button>
           </div>
           <div className="col-md-4">
             <div className="category-container sidebar-content-container">

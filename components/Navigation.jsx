@@ -38,11 +38,11 @@ const Navigation = () => {
                       className={
                         n.contentType === category ? "active-page" : ""
                       }
-                      onClick={() =>
+                      onClick={() => {
                         setNavigationToggel(
                           (navigationToggel) => !navigationToggel
-                        )
-                      }
+                        );
+                      }}
                     >
                       <Link href={"/category/" + n.contentType}>
                         {n.contentType}

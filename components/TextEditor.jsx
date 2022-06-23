@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 
-const TextEditor = ({ value, setValue }) => {
+const TextEditor = ({ value, setValue, error }) => {
   const modules = {
     toolbar: [
       [{ header: "1" }, { header: "2" }],
@@ -16,7 +16,6 @@ const TextEditor = ({ value, setValue }) => {
         { indent: "+1" },
       ],
       ["link", "image", "video"],
-      ["clean"],
     ],
     clipboard: {
       // toggle to add extra line breaks when pasting HTML:
@@ -24,11 +23,12 @@ const TextEditor = ({ value, setValue }) => {
     },
   };
   return (
-    <div>
+    <div className={error ? "quill-editor-error" : ""}>
       <ReactQuill
         value={value}
         onChange={setValue}
         modules={modules}
+        placeholder="Start writting here..."
       ></ReactQuill>
     </div>
   );

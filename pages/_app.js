@@ -1,5 +1,5 @@
 import "../styles/bootstrap.css";
-import "../styles/global.scss";
+import "../styles/global.css";
 import { wrapper, store } from "../redux/store";
 import { Provider } from "react-redux";
 

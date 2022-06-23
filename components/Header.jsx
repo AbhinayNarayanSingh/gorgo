@@ -4,7 +4,7 @@ const Header = ({ title }) => {
   return (
     <>
       <Head>
-        <title>{title || "Home - Gorgo"}</title>
+        <title>{`${title} - Gorgo` || "Home - Gorgo"}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
     </>

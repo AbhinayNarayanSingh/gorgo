@@ -11,11 +11,12 @@ import PostCardType2 from "../../container/PostCardType2";
 import CategoryContainer from "../../container/CategoryContainer";
 import BecomePro from "../../container/BecomePro";
 import { searchPostGETAction } from "../../redux/actions/searchPageAction";
+import Loader from "../../components/Loader";
 
 const SearchQuery = () => {
   const router = useRouter();
   const slug = router.query.search;
-  const { post } = useSelector((state) => state.searchPost);
+  const { post, status } = useSelector((state) => state.searchPost);
 
   const dispatch = useDispatch();
 
@@ -64,10 +65,16 @@ const SearchQuery = () => {
 
         <div className="row">
           <div className="col-md-8">
-            {post &&
-              post.map((n, index) => {
-                return <PostCardType2 n={n} index={index} key={index} />;
-              })}
+            {status === "initiate" || post.length === 0 ? (
+              <Loader />
+            ) : (
+              <>
+                {post &&
+                  post.map((n, index) => {
+                    return <PostCardType2 n={n} index={index} key={index} />;
+                  })}
+              </>
+            )}
           </div>
           <div className="col-md-4">
             <BecomePro />

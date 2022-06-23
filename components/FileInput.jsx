@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ImageFullScreenPopup from "../container/ImageFullScreenPopup";
 
-const FileInput = ({ id, value, setValue }) => {
+const FileInput = ({ id, value, setValue, error }) => {
   const [fullImagePopup, setFullImagePopup] = useState(false);
   return (
     <>
@@ -38,6 +38,7 @@ const FileInput = ({ id, value, setValue }) => {
           name=""
           id={id}
           onChange={(e) => setValue(e.target.files[0])}
+          className={error ? "error" : ""}
         />
       </div>
     </>

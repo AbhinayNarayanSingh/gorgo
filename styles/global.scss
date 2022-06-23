@@ -99,22 +99,10 @@ img {
   cursor: pointer;
 }
 
-.alert-popup {
-  position: fixed;
-  z-index: 999999;
-  bottom: 0;
-  background-color: #ff9494;
-  margin-bottom: 1rem;
-  padding: 0.25rem 1rem;
-
-  p {
-    font-size: 12px;
-    span {
-      font-weight: 500;
-    }
-  }
-  display: none;
-}
-.alert-popup.active {
-  display: block;
+.loader-component {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5rem 0;
 }

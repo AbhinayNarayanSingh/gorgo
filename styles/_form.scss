@@ -26,7 +26,7 @@
 }
 
 .form-input {
-  margin-top: 1rem;
+  // margin-top: 1rem;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -44,6 +44,12 @@
     &:focus {
       border-color: $p-color;
     }
+  }
+  p.errorMsg {
+    font-size: 10px;
+    font-weight: 500;
+    color: red;
+    margin: -0.5rem 0 0.5rem;
   }
 }
 
@@ -162,6 +168,7 @@
 
     .fa-xmark {
       margin-left: 0.25rem;
+      color: rgba(255, 255, 255, 0.5);
       &:hover {
         color: white;
       }
@@ -170,6 +177,9 @@
 }
 .search-form {
   margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+
   @media screen and (max-width: 480px) {
     button {
       margin-top: 1rem;
@@ -196,4 +206,13 @@
     margin: 0 0 2rem;
   }
   margin-top: 1rem;
+}
+
+textarea.error,
+input.error,
+select.error {
+  border-color: red;
+  &:focus {
+    border-color: red;
+  }
 }

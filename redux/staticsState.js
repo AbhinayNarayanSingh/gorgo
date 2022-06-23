@@ -1,9 +1,9 @@
 export const auth = () => {
   return {
     auth: {
-      name: "Abhinay Narayan Singh",
-      email: "abhinaynarayansingh@appscrip.co",
-      profile: "",
+      // name: "Abhinay Narayan Singh",
+      // email: "abhinaynarayansingh@appscrip.co",
+      // profile: "",
     },
   };
 };

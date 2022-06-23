@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Alert from "../hoc/Alert";
+
 import Image from "next/image";
 import UserProfile from "../container/UserProfile";
 
@@ -17,7 +17,6 @@ const Navigation = () => {
 
   return (
     <>
-      <Alert />
       <div className="container-fluid nav">
         <div className="container nav-container">
           <Link href="/" className="img-container">

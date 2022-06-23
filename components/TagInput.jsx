@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const TagInput = ({
   type = "text",
@@ -7,16 +7,31 @@ const TagInput = ({
   value,
   setValue,
   id,
+  error,
 }) => {
   const [tags, setTags] = useState("");
+  const [internalError, setInternalError] = useState(false);
 
   const submithandler = (e) => {
     e.preventDefault();
-    setValue((value) => {
-      return [...value, tags];
-    });
-    setTags("");
+    if (tags !== "") {
+      setValue((value) => {
+        return [...value, tags];
+      });
+      setTags("");
+    } else {
+      setInternalError(true);
+    }
   };
+
+  const deleteHandler = (e) => {
+    console.log(e);
+    setValue(value.filter((name) => name !== e));
+  };
+
+  useEffect(() => {
+    setInternalError(false);
+  }, [tags]);
   return (
     <form className="form-input tag-input" onSubmit={submithandler}>
       {label && (
@@ -26,7 +41,11 @@ const TagInput = ({
             value.map((n, index) => {
               return (
                 <span key={index} className="tags">
-                  {n} <i className="fa-solid fa-xmark"></i>
+                  {n}{" "}
+                  <i
+                    className="fa-solid fa-xmark"
+                    onClick={() => deleteHandler(n)}
+                  ></i>
                 </span>
               );
             })}
@@ -38,6 +57,7 @@ const TagInput = ({
         id={id}
         value={tags}
         onChange={(e) => setTags(e.target.value)}
+        className={error || internalError ? "error" : ""}
       />
     </form>
   );

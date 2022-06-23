@@ -16,8 +16,7 @@ import {
 } from "./reducers/homePageReducer";
 import { searchPostGETReducer } from "./reducers/searchPageReducer";
 import { watchSearchPostGET } from "./actions/searchPageAction";
-import { watchAlert } from "./actions/alertAction";
-import { alertReducer } from "./reducers/alertReducer";
+
 import { homePagePostGET } from "./actions/homePageActions";
 
 // Reducer Import
@@ -28,7 +27,7 @@ const reducer = combineReducers({
   posts: postGetReducer,
   categoryPost: categoryPostGETReducer,
   searchPost: searchPostGETReducer,
-  alert: alertReducer,
+
   auth: auth,
 });
 
@@ -47,7 +46,7 @@ export const store = createStore(
 sagaMiddleware.run(homePagePostGET);
 sagaMiddleware.run(watchSearchPostGET);
 sagaMiddleware.run(watchCategoryPostGET);
-sagaMiddleware.run(watchAlert);
+// sagaMiddleware.run(watchAlert);
 
 // assigning store to next wrapper
 const makeStore = () => store;

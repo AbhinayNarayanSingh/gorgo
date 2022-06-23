@@ -816,7 +816,6 @@ h5 span span {
 }
 
 .form-input {
-  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -832,6 +831,12 @@ h5 span span {
 }
 .form-input input:active, .form-input input:focus {
   border-color: #029e74;
+}
+.form-input p.errorMsg {
+  font-size: 10px;
+  font-weight: 500;
+  color: red;
+  margin: -0.5rem 0 0.5rem;
 }
 
 .Textarea {
@@ -936,6 +941,7 @@ h5 span span {
 }
 .tag-input .tags .fa-xmark {
   margin-left: 0.25rem;
+  color: rgba(255, 255, 255, 0.5);
 }
 .tag-input .tags .fa-xmark:hover {
   color: white;
@@ -943,6 +949,8 @@ h5 span span {
 
 .search-form {
   margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
 }
 @media screen and (max-width: 480px) {
   .search-form button {
@@ -967,6 +975,17 @@ h5 span span {
   text-align: center;
   font-size: 3rem;
   margin: 0 0 2rem;
+}
+
+textarea.error,
+input.error,
+select.error {
+  border-color: red;
+}
+textarea.error:focus,
+input.error:focus,
+select.error:focus {
+  border-color: red;
 }
 
 .editor-text-container {
@@ -1096,6 +1115,10 @@ h5 span span {
   }
 }
 
+.quill-editor-error .ql-editor {
+  border-color: red !important;
+}
+
 *,
 h1,
 h2,
@@ -1172,22 +1195,10 @@ img {
   cursor: pointer;
 }
 
-.alert-popup {
-  position: fixed;
-  z-index: 999999;
-  bottom: 0;
-  background-color: #ff9494;
-  margin-bottom: 1rem;
-  padding: 0.25rem 1rem;
-  display: none;
-}
-.alert-popup p {
-  font-size: 12px;
-}
-.alert-popup p span {
-  font-weight: 500;
-}
-
-.alert-popup.active {
-  display: block;
+.loader-component {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5rem 0;
 }

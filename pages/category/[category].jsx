@@ -14,6 +14,7 @@ import HeroFooter from "../../container/HeroFooter";
 import { categoryPostGETAction } from "../../redux/actions/categoryPageAction";
 import Header from "../../components/Header";
 import CategoryContainer from "../../container/CategoryContainer";
+import Loader from "../../components/Loader";
 
 const Category = () => {
   const router = useRouter();
@@ -51,21 +52,30 @@ const Category = () => {
         </div>
         <div className="row">
           <div className="col-md-8">
-            {post &&
-              post.map((n, index) => {
-                return <PostCardType2 n={n} index={index} key={index} />;
-              })}
+            {post.length === 0 ? (
+              <Loader />
+            ) : (
+              <>
+                {post &&
+                  post.map((n, index) => {
+                    return <PostCardType2 n={n} index={index} key={index} />;
+                  })}
 
-            <button
-              onClick={() => {
-                setLimit((limit) => limit + 1);
-              }}
-              style={{ marginBottom: "2rem" }}
-              className={"btn-plain"}
-            >
-              {status && status === "initiate" ? "Loading..." : "Read more"}
-            </button>
+                <button
+                  onClick={() => {
+                    setLimit((limit) => limit + 1);
+                  }}
+                  style={{ marginBottom: "2rem" }}
+                  className={"btn-plain"}
+                >
+                  {(status && status === "initiate") || !post
+                    ? "Loading..."
+                    : "Read more"}
+                </button>
+              </>
+            )}
           </div>
+
           <div className="col-md-4">
             <div className="category-container sidebar-content-container">
               {contentType &&

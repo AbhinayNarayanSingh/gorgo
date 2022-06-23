@@ -134,3 +134,9 @@
     }
   }
 }
+
+.quill-editor-error {
+  .ql-editor {
+    border-color: red !important;
+  }
+}

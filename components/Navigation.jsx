@@ -4,9 +4,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Alert from "../hoc/Alert";
 import Image from "next/image";
+import UserProfile from "../container/UserProfile";
 
 const Navigation = () => {
   const { contentType } = useSelector((state) => state.contentTypes);
+
+  const { auth } = useSelector((state) => state.auth);
 
   const [navigationToggel, setNavigationToggel] = useState(true);
   const router = useRouter();
@@ -60,18 +63,27 @@ const Navigation = () => {
               className="fa-solid fa-magnifying-glass"
               onClick={() => router.push("/explore")}
             ></i>
-            <button
-              className="btn-secondary"
-              onClick={() => router.push("/signin")}
-            >
-              Login
-            </button>
-            <button
-              className="btn-primary"
-              onClick={() => router.push("/signup")}
-            >
-              Register
-            </button>
+
+            {auth && auth["email"] ? (
+              <div className="user-profile">
+                <UserProfile />
+              </div>
+            ) : (
+              <>
+                <button
+                  className="btn-secondary"
+                  onClick={() => router.push("/signin")}
+                >
+                  Login
+                </button>
+                <button
+                  className="btn-primary"
+                  onClick={() => router.push("/signup")}
+                >
+                  Register
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>

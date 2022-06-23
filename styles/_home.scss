@@ -1,5 +1,6 @@
 #home_page {
   .hero-image-container {
+    margin-top: 2rem;
     position: relative;
 
     .hero-slider-container {
@@ -211,18 +212,7 @@
     padding-bottom: 1rem;
 
     button {
-      background-color: white;
-      color: grey;
-      border: 1px solid grey !important;
-      width: 100%;
-      margin: 0;
       margin: 2rem 0;
-
-      &:hover {
-        color: black;
-        border-color: black;
-        transition: ease 2s;
-      }
     }
   }
 

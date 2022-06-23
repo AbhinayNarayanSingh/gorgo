@@ -19,7 +19,7 @@ const Category = () => {
   const router = useRouter();
   const category = router.query.category;
 
-  const { hero, post } = useSelector((state) => state.categoryPost);
+  const { hero, post, status } = useSelector((state) => state.categoryPost);
   const { contentType } = useSelector((state) => state.contentTypes);
   const [limit, setLimit] = useState(1);
 
@@ -61,8 +61,9 @@ const Category = () => {
                 setLimit((limit) => limit + 1);
               }}
               style={{ marginBottom: "2rem" }}
+              className={"btn-plain"}
             >
-              Next Page
+              {status && status === "initiate" ? "Loading..." : "Read more"}
             </button>
           </div>
           <div className="col-md-4">

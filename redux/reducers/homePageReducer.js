@@ -9,23 +9,27 @@ const initialState = {
 export const postGetReducer = (state = initialState, action) => {
   switch (action.type) {
     case constant.HERO_POST_GET_INITIATE:
-      return { ...state, status: "initiate", hero: [] };
+      return { ...state, status: "initiate" };
     case constant.HERO_POST_GET_SCUCESS:
       return { ...state, status: "success", hero: action.payload };
     case constant.HERO_POST_GET_FAIL:
       return { ...state, status: "error", error: action.payload };
 
     case constant.FEATURE_POST_GET_INITIATE:
-      return { ...state, status: "initiate", feature: [] };
+      return { ...state, status: "initiate" };
     case constant.FEATURE_POST_GET_SCUCESS:
       return { ...state, status: "success", feature: action.payload };
     case constant.FEATURE_POST_GET_FAIL:
       return { ...state, status: "error", error: action.payload };
 
     case constant.POST_GET_INITIATE:
-      return { ...state, status: "initiate", post: [] };
+      return { ...state, status: "initiate" };
     case constant.POST_GET_SCUCESS:
-      return { ...state, status: "success", post: action.payload };
+      return {
+        ...state,
+        status: "success",
+        post: [...state.post, ...action.payload],
+      };
     case constant.POST_GET_FAIL:
       return { ...state, status: "error", error: action.payload };
 

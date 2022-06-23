@@ -16,6 +16,8 @@ $p: #90a1b7;
 @import "./home";
 @import "./category";
 @import "./form";
+@import "./profile";
+@import "./newArticlePage";
 
 *,
 h1,
@@ -31,17 +33,14 @@ label {
   padding: 0;
   border: 0;
   vertical-align: baseline;
-  text-decoration: none;
-  list-style-type: none;
-
   font-family: "Poppins", sans-serif;
   color: rgba($color: #000000, $alpha: 0.9);
-  font-style: normal;
-  text-decoration: none;
   list-style: none;
   outline: none;
 }
-
+a {
+  text-decoration: none;
+}
 button {
   background-color: $p-color;
   padding: 0.45rem 1.5rem;
@@ -67,6 +66,19 @@ button.btn-secondary {
     transition: all 0.2s ease-in-out;
     background-color: $p-color;
     color: white;
+  }
+}
+
+button.btn-plain {
+  background-color: white;
+  color: grey;
+  border: 1px solid grey !important;
+  width: 100%;
+
+  &:hover {
+    color: black;
+    border-color: black;
+    transition: ease 1s;
   }
 }
 

@@ -9,7 +9,7 @@ import createSagaMiddleware from "redux-saga";
 import { watchCategoryPostGET } from "./actions/categoryPageAction";
 
 // Static state from "./staticState.js"
-import { sources, authors, contentTypes } from "./staticsState";
+import { auth, sources, authors, contentTypes } from "./staticsState";
 import {
   categoryPostGETReducer,
   postGetReducer,
@@ -29,6 +29,7 @@ const reducer = combineReducers({
   categoryPost: categoryPostGETReducer,
   searchPost: searchPostGETReducer,
   alert: alertReducer,
+  auth: auth,
 });
 
 const initialState = {};

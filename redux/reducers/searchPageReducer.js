@@ -8,7 +8,7 @@ export const searchPostGETReducer = (
 ) => {
   switch (action.type) {
     case constant.SEARCH_POST_GET_INITIATE:
-      return { ...state, status: "initiate", post: [] };
+      return { ...state, status: "initiate" };
     case constant.SEARCH_POST_GET_SCUCESS:
       return { ...state, status: "success", post: action.payload };
 

@@ -4,15 +4,15 @@ import { takeEvery, call, put } from "redux-saga/effects";
 import { get } from "../../utils/request";
 
 // Action
-export const homePagePostGETAction = () => {
-  return { type: "GET_HOME_PAGE_POST" };
+export const homePagePostGETAction = (page) => {
+  return { type: "GET_HOME_PAGE_POST", page };
 };
 
 export function* homePagePostGET() {
   yield takeEvery("GET_HOME_PAGE_POST", workerHomePagePostGET);
 }
 
-export function* workerHomePagePostGET() {
+export function* workerHomePagePostGET(page) {
   try {
     yield put({ type: constant.POST_GET_INITIATE });
 
@@ -35,7 +35,9 @@ export function* workerHomePagePostGET() {
     });
 
     const post = yield call(() => {
-      return get("top-headlines?country=in&language=en&pageSize=10");
+      return get(
+        `top-headlines?country=in&language=en&pageSize=10&page=${page}`
+      );
     });
 
     yield put({

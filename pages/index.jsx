@@ -25,13 +25,14 @@ const Home = () => {
   const { contentType } = useSelector((state) => state.contentTypes);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const { hero, feature, post } = useSelector((state) => state.posts);
+  const [page, setPage] = useState(1);
+  const { hero, feature, post, status } = useSelector((state) => state.posts);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(homePagePostGETAction());
-  }, [dispatch]);
+    dispatch(homePagePostGETAction(page));
+  }, [dispatch, page]);
   return (
     <div id="home_page">
       <Header />
@@ -98,9 +99,12 @@ const Home = () => {
                     return <PostCardType2 n={n} key={index} />;
                   })}
 
-                <Link href="/category/business">
-                  <button>View all </button>
-                </Link>
+                <button
+                  className="btn-plain"
+                  onClick={() => setPage((page) => page + 1)}
+                >
+                  {status && status === "initiate" ? "Loading..." : "Read more"}{" "}
+                </button>
               </div>
             </div>
 

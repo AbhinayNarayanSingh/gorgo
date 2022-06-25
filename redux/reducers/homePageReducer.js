@@ -47,6 +47,8 @@ export const categoryPostGETReducer = (
 ) => {
   switch (action.type) {
     case constant.CATEGORY_POST_GET_INITIATE:
+      return { ...state, status: "initiate", post: [...action.payload] };
+    case constant.CATEGORY_POST_UPDATE_GET_INITIATE:
       return { ...state, status: "initiate" };
     case constant.CATEGORY_POST_GET_SCUCESS:
       return {

@@ -106,3 +106,38 @@ img {
   align-items: center;
   margin: 5rem 0;
 }
+
+.alert {
+  margin-top: 1rem;
+  &.alert-denger {
+    p {
+      a {
+      }
+    }
+  }
+}
+
+.alert-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 0;
+  left: 0;
+  z-index: 99999999999;
+  background-color: #f8d7da;
+  padding: 0.5rem 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 500;
+
+  p,
+  a {
+    color: #842029;
+    text-align: center;
+  }
+  a {
+    text-decoration: underline;
+  }
+}

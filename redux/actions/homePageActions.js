@@ -8,7 +8,7 @@ export const homePagePostGETAction = (page) => {
   return { type: "GET_HOME_PAGE_POST", page };
 };
 
-export function* homePagePostGET() {
+export function* watchHomePagePostGET() {
   yield takeEvery("GET_HOME_PAGE_POST", workerHomePagePostGET);
 }
 

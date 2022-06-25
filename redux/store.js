@@ -10,28 +10,41 @@ import { watchCategoryPostGET } from "./actions/categoryPageAction";
 
 // Static state from "./staticState.js"
 import { auth, sources, authors, contentTypes } from "./staticsState";
+
+// Reducers
 import {
   categoryPostGETReducer,
   postGetReducer,
 } from "./reducers/homePageReducer";
 import { searchPostGETReducer } from "./reducers/searchPageReducer";
+import { userAuthenticationReducer } from "./reducers/userAuthenticationReducer";
+import { blogPostReducer } from "./reducers/blogPostReducer";
+
+// SagaWatcher
 import { watchSearchPostGET } from "./actions/searchPageAction";
+import { watchHomePagePostGET } from "./actions/homePageActions";
+import { watchUserAuthentication } from "./actions/userAuthenticationAction";
+import { watchBlogPostPOST } from "./actions/blogPostAction";
 
-import { homePagePostGET } from "./actions/homePageActions";
+//
+import { userInfoFromLocalStorage } from "./initialState";
 
-// Reducer Import
 const reducer = combineReducers({
   sources: sources,
   authors: authors,
   contentTypes: contentTypes,
+
   posts: postGetReducer,
   categoryPost: categoryPostGETReducer,
   searchPost: searchPostGETReducer,
 
-  auth: auth,
+  auth: userAuthenticationReducer,
+  blog: blogPostReducer,
 });
 
-const initialState = {};
+const initialState = {
+  // auth: userInfoFromLocalStorage,
+};
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -43,10 +56,11 @@ export const store = createStore(
   composeWithDevTools(applyMiddleware(...middleware))
 );
 
-sagaMiddleware.run(homePagePostGET);
+sagaMiddleware.run(watchHomePagePostGET);
 sagaMiddleware.run(watchSearchPostGET);
 sagaMiddleware.run(watchCategoryPostGET);
-// sagaMiddleware.run(watchAlert);
+sagaMiddleware.run(watchUserAuthentication);
+sagaMiddleware.run(watchBlogPostPOST);
 
 // assigning store to next wrapper
 const makeStore = () => store;

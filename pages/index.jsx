@@ -7,6 +7,7 @@ import { homePagePostGETAction } from "../redux/actions/homePageActions";
 // component
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
+import Loader from "../components/Loader";
 
 // container
 import PostCardType1 from "../container/PostCardType1";
@@ -35,7 +36,7 @@ const Home = () => {
   }, [dispatch, page]);
   return (
     <div id="home_page">
-      <Header />
+      <Header title="Home" />
       <Navigation />
       <div className="container">
         <div className="hero-image-container">
@@ -78,10 +79,16 @@ const Home = () => {
           <div className="row section-1">
             <div className="col-md-8 ">
               <div className="row">
-                {feature &&
-                  feature.map((n, index) => {
-                    return <PostCardType1 n={n} key={index} />;
-                  })}
+                {feature.length === 0 ? (
+                  <Loader />
+                ) : (
+                  <>
+                    {feature &&
+                      feature.map((n, index) => {
+                        return <PostCardType1 n={n} key={index} />;
+                      })}
+                  </>
+                )}
               </div>
 
               <div className="promotion-cover-banner">
@@ -94,17 +101,25 @@ const Home = () => {
               </div>
 
               <div className="section-2">
-                {post &&
-                  post.map((n, index) => {
-                    return <PostCardType2 n={n} key={index} />;
-                  })}
+                {post.length === 0 ? (
+                  <Loader />
+                ) : (
+                  <>
+                    {post &&
+                      post.map((n, index) => {
+                        return <PostCardType2 n={n} key={index} />;
+                      })}
 
-                <button
-                  className="btn-plain"
-                  onClick={() => setPage((page) => page + 1)}
-                >
-                  {status && status === "initiate" ? "Loading..." : "Read more"}{" "}
-                </button>
+                    <button
+                      className="btn-plain"
+                      onClick={() => setPage((page) => page + 1)}
+                    >
+                      {status && status === "initiate"
+                        ? "Loading..."
+                        : "Read more"}{" "}
+                    </button>
+                  </>
+                )}
               </div>
             </div>
 

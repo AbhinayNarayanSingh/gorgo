@@ -1,6 +1,6 @@
 .nav {
   position: relative;
-  z-index: 100000000000000020;
+  z-index: 99;
   padding: 0.75rem;
   width: 100%;
   height: 80px;
@@ -737,7 +737,7 @@ h5 span span {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.6980392157);
   height: 100px;
-  z-index: 999;
+  z-index: 9;
   top: 0;
   display: flex;
   flex-direction: column;
@@ -958,12 +958,27 @@ h5 span span {
   }
 }
 
+textarea.error,
+input.error,
+select.error {
+  border-color: red;
+}
+textarea.error:focus,
+input.error:focus,
+select.error:focus {
+  border-color: red;
+}
+
 .sign-form input {
   margin-bottom: 1rem;
 }
 
 .sign-container {
+  display: flex;
+  align-items: center;
+  min-height: 80vh;
   margin: 5rem auto;
+  position: relative;
   margin-top: 1rem;
 }
 .sign-container button {
@@ -976,16 +991,19 @@ h5 span span {
   font-size: 3rem;
   margin: 0 0 2rem;
 }
-
-textarea.error,
-input.error,
-select.error {
-  border-color: red;
+@media screen and (max-width: 480px) {
+  .sign-container {
+    min-height: 50vh;
+  }
 }
-textarea.error:focus,
-input.error:focus,
-select.error:focus {
-  border-color: red;
+.sign-container .overlay-loader {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 999999999;
 }
 
 .editor-text-container {
@@ -1201,4 +1219,29 @@ img {
   justify-content: center;
   align-items: center;
   margin: 5rem 0;
+}
+
+.alert {
+  margin-top: 1rem;
+}
+.alert-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 0;
+  left: 0;
+  z-index: 99999999999;
+  background-color: #f8d7da;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+}
+.alert-container p,
+.alert-container a {
+  color: #842029;
+  text-align: center;
+}
+.alert-container a {
+  text-decoration: underline;
 }

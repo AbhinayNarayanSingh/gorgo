@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
 // component
+import Header from "../components/Header";
 import Footer from "../components/Footer";
+import OverlayLoader from "../components/OverlayLoader";
 import Navigation from "../components/Navigation";
 import Input from "../components/Input";
+import { userSignUpAuthenticationAction } from "../redux/actions/userAuthenticationAction";
+import Link from "next/link";
+import Alert from "../hoc/Alert";
 
 // container
-
-import Header from "../components/Header";
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -22,6 +25,10 @@ const SignUp = () => {
 
   const [validationError, setValidationError] = useState("");
   const [validationErrorMsg, setValidationErrorMsg] = useState("");
+
+  const { status, data } = useSelector((state) => state.auth);
+
+  const [serverError, setServerError] = useState(false);
 
   useEffect(() => {
     setValidationError(false);
@@ -44,17 +51,50 @@ const SignUp = () => {
       setValidationErrorMsg("Password should be match");
       return setValidationError("confirmPassword");
     }
+
+    let body = {
+      firstname: name,
+      email: email,
+      username: email,
+      password: password,
+    };
+
+    dispatch(userSignUpAuthenticationAction(body));
+
+    setPassword("");
+    setConfirmPassword("");
+
+    if (status === "success") {
+      router.push("/");
+    } else {
+      setServerError(true);
+      setTimeout(() => {
+        setServerError(false);
+      }, 4000);
+    }
   };
 
   return (
     <div id="home_page">
       <Header title="Sign Up" />
+      {status && status === "error" && serverError && (
+        <Alert>
+          <p>
+            This email already exists. Please try a different email address to
+            register, or <Link href="/signin">login</Link> to your existing
+            account.
+          </p>
+        </Alert>
+      )}
 
       <Navigation />
       <div className="container">
         <div className="row justify-content-center sign-container">
+          {status && status === "initiate" ? <OverlayLoader /> : ""}
+
           <div className="col-md-5">
             <h1>Sign Up</h1>
+
             <form className="sign-form" onSubmit={submitHandler}>
               <Input
                 label="Name"

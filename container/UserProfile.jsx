@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+import { userSignOutAuthenticationAction } from "../redux/actions/userAuthenticationAction";
 
 const UserProfile = () => {
   const { auth } = useSelector((state) => state.auth);
   const [toggel, setToggel] = useState(false);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -17,7 +20,9 @@ const UserProfile = () => {
         <div className={`user-action-option ${toggel ? "active" : ""}`}>
           <Link href="/new-article">New article</Link>
           <Link href="/">Profile</Link>
-          <p>Logout</p>
+          <p onClick={() => dispatch(userSignOutAuthenticationAction())}>
+            Logout
+          </p>
         </div>
       </div>
     </>

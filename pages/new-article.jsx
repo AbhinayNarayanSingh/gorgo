@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 // component
 import Footer from "../components/Footer";
@@ -10,89 +11,66 @@ import Select from "../components/Select";
 import FileInput from "../components/FileInput";
 import TagInput from "../components/TagInput";
 
+// action
+
+import { blogPostPOSTAction } from "../redux/actions/blogPostAction";
+import { UploadImage } from "../utils/request";
+
 const NewArticle = () => {
+  const dispatch = useDispatch();
+
+  const [error, setError] = useState("");
+
   const [title, setTitle] = useState("");
   const [subTitle, setSubTitle] = useState("");
   const [category, setCategory] = useState("");
   const [content, setContent] = useState("");
   const [tags, setTags] = useState([]);
-
-  const [error, setError] = useState("");
-
-  const [image1, setImage1] = useState();
-  const [image2, setImage2] = useState();
-  const [image3, setImage3] = useState();
-  const [image4, setImage4] = useState();
-  const [image5, setImage5] = useState();
-  const [image6, setImage6] = useState();
+  const [files, setFiles] = useState([
+    { id: 0, file: null },
+    { id: 1, file: null },
+    { id: 2, file: null },
+    { id: 3, file: null },
+    { id: 4, file: null },
+    { id: 5, file: null },
+  ]);
 
   useEffect(() => {
     setError("");
   }, [title, subTitle, category, tags, content]);
 
-  const imgContainer = [
-    {
-      id: 1,
-      value: image1,
-      setValue: setImage1,
-    },
-    {
-      id: 2,
-      value: image2,
-      setValue: setImage2,
-    },
-    {
-      id: 3,
-      value: image3,
-      setValue: setImage3,
-    },
-    {
-      id: 4,
-      value: image4,
-      setValue: setImage4,
-    },
-    {
-      id: 5,
-      value: image5,
-      setValue: setImage5,
-    },
-    {
-      id: 6,
-      value: image6,
-      setValue: setImage6,
-    },
-  ];
-
-  const validationCheck = () => {
-    if (title === "") {
-      setError("title");
-      return false;
-    } else if (subTitle === "") {
-      setError("subTitle");
-      return false;
-    } else if (category === "") {
-      setError("category");
-      return false;
-    } else if (content === "") {
-      setError("content");
-      return false;
-    } else if (tags.length === 0) {
-      setError("tags");
-      return false;
-    }
-    return true;
-  };
   const submitHandler = () => {
-    validationCheck();
-    console.log(tags);
-    console.log(title);
-    console.log(subTitle);
-    console.log(category);
-    console.log(content);
+    // if (ImageArr.length === 0) {
+    //   return setError("ImageArr");
+    // } else if (title === "") {
+    //   return setError("title");
+    // } else if (subTitle === "") {
+    //   return setError("subTitle");
+    // } else if (category === "") {
+    //   return setError("category");
+    // } else if (content === "") {
+    //   return setError("content");
+    // } else if (tags.length === 0) {
+    //   return setError("tags");
+    // }
 
-    console.log(">>>>> images");
+    const imageUploadFn = () => {
+      const ImageArr = [];
 
-    imgContainer.map((n) => console.log(n.value));
+      files.map((item) => {
+        if (item["file"] !== null) {
+          UploadImage(item["file"]).then((res) => ImageArr.push(res));
+        }
+      });
+
+      return ImageArr;
+    };
+    // dispatch(
+    //   blogPostPOSTAction({ ImageArr, title, category, subTitle, content, tags })
+    // );
+
+    console.log(files);
+    console.log(ImageArr);
   };
 
   return (
@@ -104,22 +82,20 @@ const NewArticle = () => {
             <div className="col-md-8 editor col-12">
               <h2>Add New Article</h2>
               <div className="row">
-                {imgContainer.map((n) => {
+                {files.map((item, index) => {
                   return (
-                    <div
-                      className="col-md-3 col-xl-2 col-4"
-                      key={n.id}
-                      style={{ marginBottom: "1rem" }}
-                    >
+                    <div className="col-md-3 col-xl-2 col-4">
                       <FileInput
-                        id={n.id}
-                        value={n.value}
-                        setValue={n.setValue}
+                        id={index}
+                        index={index}
+                        value={files[index]["file"]}
+                        setValue={setFiles}
                       />
                     </div>
                   );
                 })}
               </div>
+
               <Textarea
                 label="Title"
                 value={title}

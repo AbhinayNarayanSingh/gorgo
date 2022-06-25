@@ -5,16 +5,19 @@ import { useSelector, useDispatch } from "react-redux";
 // component
 import Footer from "../../components/Footer";
 import Navigation from "../../components/Navigation";
+import Loader from "../../components/Loader";
 
 // container
 import PostCardType2 from "../../container/PostCardType2";
 import PopularPostSideBar from "../../container/PopularPostSideBar";
 import BecomePro from "../../container/BecomePro";
 import HeroFooter from "../../container/HeroFooter";
-import { categoryPostGETAction } from "../../redux/actions/categoryPageAction";
+import {
+  categoryPostGETAction,
+  categoryPostUpdateGETAction,
+} from "../../redux/actions/categoryPageAction";
 import Header from "../../components/Header";
 import CategoryContainer from "../../container/CategoryContainer";
-import Loader from "../../components/Loader";
 
 const Category = () => {
   const router = useRouter();
@@ -34,7 +37,11 @@ const Category = () => {
     if (category) {
       dispatch(categoryPostGETAction(category, limit));
     }
-  }, [dispatch, category, limit]);
+  }, [dispatch, category]);
+
+  useEffect(() => {
+    dispatch(categoryPostUpdateGETAction(category, limit));
+  }, [dispatch, limit]);
 
   return (
     <div>

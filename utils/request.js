@@ -49,7 +49,6 @@ export const authPOST = (endpoint, body) => {
 
 export const UploadImage = async (file) => {
   try {
-    console.log(file, ">>>>> file");
     const data = new FormData();
     data.append("file", file);
     data.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);

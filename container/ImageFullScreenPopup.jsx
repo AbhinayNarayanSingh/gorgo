@@ -1,5 +1,4 @@
 const ImageFullScreenPopup = ({ url, setToggel }) => {
-  console.log(url);
   return (
     <div className="ImageFullScreenPopup">
       <div className="image-container">

@@ -1,77 +1,70 @@
 import React, { useState } from "react";
 import ImageFullScreenPopup from "../container/ImageFullScreenPopup";
 
-const FileInput = ({ value, setValue, index }) => {
+/**
+ * @description This component is for uploading files
+ * @param value [{url: string, file: File}]
+ * @param setValue method to update value
+ */
+
+const FileInput = ({ value, setValue, index, id }) => {
   const [fullImagePopup, setFullImagePopup] = useState(false);
 
-  const setValueFn = (value, id, e) => {
-    let tempArr = [];
-
-    value.map((item) => {
-      if (item["id"] === id) {
-        return tempArr.push({ id: id, url: null, file: e.target.files[0] });
-      } else {
-        return tempArr.push(item);
-      }
-    });
-
-    return tempArr;
+  const handleChange = (e) => {
+    let valueIns = [...value];
+    let file = e.target.files[0];
+    let base64Url = URL.createObjectURL(file);
+    valueIns[index] = {
+      file: file,
+      url: base64Url,
+    };
+    console.log("file", file, "url", base64Url);
+    setValue(valueIns);
   };
 
-  const removeValueFn = (value, id) => {
-    let tempArr = [];
-
-    value.map((item) => {
-      if (item["id"] === id) {
-        return tempArr.push({ id: id, url: null, file: null });
-      } else {
-        return tempArr.push(item);
-      }
-    });
-
-    return tempArr;
+  const handleRemoveFn = (e) => {
+    let valueIns = [...value];
+    let file = null;
+    let base64Url = null;
+    valueIns[index] = {
+      file: file,
+      url: base64Url,
+    };
+    setValue(valueIns);
   };
 
   return (
-    <>
+    <div className="FileInput">
       {fullImagePopup && (
         <ImageFullScreenPopup
-          url={value && URL.createObjectURL(value)}
+          url={value[index].url || "./img/blank-img.png"}
           setToggel={setFullImagePopup}
         />
       )}
+      <div>
+        <input onChange={handleChange} type="file" id={id} />
+        <label htmlFor={id}>
+          <img
+            src={value[index].url || "./img/blank-img.png"}
+            alt=""
+            className="file_input_label_img"
+          />
+        </label>
 
-      <div className="FileInput">
-        {value ? (
-          <>
-            <img src={value && URL.createObjectURL(value)} alt="" />
-
-            <div className="user-action">
-              <i
-                className="fa-solid fa-trash-can"
-                onClick={() => setValue((value) => removeValueFn(value, index))}
-              ></i>
-              <i
-                className="fa-solid fa-expand"
-                onClick={() => setFullImagePopup(true)}
-              ></i>
-            </div>
-          </>
-        ) : (
-          <label htmlFor={index} className="col-6">
-            <img src={"./img/blank-img.png"} alt="" className="img-preview" />
-          </label>
-        )}
-
-        <input
-          type="file"
-          name=""
-          id={index}
-          onChange={(e) => setValue((value) => setValueFn(value, index, e))}
-        />
+        <div className="user-action">
+          <i class="fa-solid fa-trash" onClick={() => handleRemoveFn()}></i>
+          <i
+            className="fa-solid fa-expand"
+            onClick={() => setFullImagePopup(true)}
+          ></i>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
-
 export default FileInput;
+
+/**
+ * className : file_input
+ * id: file-input
+ */

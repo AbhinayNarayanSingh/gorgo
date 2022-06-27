@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 // component
 import Footer from "../components/Footer";
@@ -27,22 +27,43 @@ const NewArticle = () => {
   const [content, setContent] = useState("");
   const [tags, setTags] = useState([]);
   const [files, setFiles] = useState([
-    { id: 0, file: null },
-    { id: 1, file: null },
-    { id: 2, file: null },
-    { id: 3, file: null },
-    { id: 4, file: null },
-    { id: 5, file: null },
+    { file: null, url: null },
+    { file: null, url: null },
+    {
+      file: null,
+      url: "https://miro.medium.com/max/1400/1*popLGIUJaWpO7fuWAjlArA.jpeg",
+    },
+    { file: null, url: null },
+    { file: null, url: null },
+    { file: null, url: null },
   ]);
 
   useEffect(() => {
     setError("");
   }, [title, subTitle, category, tags, content]);
 
+  const ImageArr = [];
+
+  const uploadImage = () => {
+    files.map(async (item) => {
+      if (item["url"] !== null) {
+        return ImageArr.push(item["url"]);
+      } else if (item["file"] !== null) {
+        const res = await UploadImage(item["file"]);
+        return ImageArr.push(res);
+      }
+    });
+    console.log(ImageArr);
+  };
+
   const submitHandler = () => {
+    uploadImage();
+
     // if (ImageArr.length === 0) {
-    //   return setError("ImageArr");
-    // } else if (title === "") {
+    //   return alert("Image Arr is empty");
+    // } else
+
+    // if (title === "") {
     //   return setError("title");
     // } else if (subTitle === "") {
     //   return setError("subTitle");
@@ -54,23 +75,16 @@ const NewArticle = () => {
     //   return setError("tags");
     // }
 
-    const imageUploadFn = () => {
-      const ImageArr = [];
+    // const formData = {
+    //   title: title,
+    //   subtitle: subTitle,
+    //   category: category,
+    //   banners: ImageArr,
+    //   content: content,
+    //   tags: tags,
+    // };
 
-      files.map((item) => {
-        if (item["file"] !== null) {
-          UploadImage(item["file"]).then((res) => ImageArr.push(res));
-        }
-      });
-
-      return ImageArr;
-    };
-    // dispatch(
-    //   blogPostPOSTAction({ ImageArr, title, category, subTitle, content, tags })
-    // );
-
-    console.log(files);
-    console.log(ImageArr);
+    // dispatch(blogPostPOSTAction(formData));
   };
 
   return (
@@ -84,11 +98,11 @@ const NewArticle = () => {
               <div className="row">
                 {files.map((item, index) => {
                   return (
-                    <div className="col-md-3 col-xl-2 col-4">
+                    <div className="col-md-3 col-xl-2 col-4" key={index}>
                       <FileInput
-                        id={index}
+                        id={`file-${index}`}
                         index={index}
-                        value={files[index]["file"]}
+                        value={files}
                         setValue={setFiles}
                       />
                     </div>

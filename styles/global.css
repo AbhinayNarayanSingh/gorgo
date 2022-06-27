@@ -816,6 +816,7 @@ h5 span span {
 }
 
 .form-input {
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -884,40 +885,33 @@ h5 span span {
   height: 100px;
   width: 100px;
   padding: 0;
-  margin: 0;
+  margin: 0 0 1rem;
   position: relative;
 }
-.FileInput img {
+.FileInput .file_input_label_img {
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   border-radius: 5px;
   height: 100px;
   width: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .FileInput input {
   display: none;
 }
 .FileInput .user-action {
-  height: 100%;
-  width: 100%;
   position: absolute;
-  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999999;
+  justify-content: space-between;
+  width: 100%;
 }
 .FileInput .user-action i {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: rgb(255, 255, 255);
-  width: 2rem !important;
-  height: 2rem !important;
-  margin: 0.5rem;
+  color: rgb(0, 0, 0);
   font-size: 0.8rem;
-  padding: 0.5rem;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.7);
+  margin: 0 0.25rem 0.25rem;
   opacity: 0.3;
   cursor: pointer;
 }
@@ -1080,12 +1074,11 @@ select.error:focus {
 .ImageFullScreenPopup {
   position: fixed;
   top: 0;
-  z-index: 1000000000000000100;
   left: 0;
+  z-index: 99;
   background-color: rgba(255, 255, 255, 0.386);
   width: 100%;
   height: 100%;
-  overflow: -moz-hidden-unscrollable;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1097,20 +1090,10 @@ select.error:focus {
      object-fit: contain;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
-@media screen and (max-width: 480px) {
-  .ImageFullScreenPopup img {
-    max-width: 90%;
-  }
-}
 .ImageFullScreenPopup .image-container {
   position: relative;
   display: flex;
   justify-content: center;
-}
-@media screen and (max-width: 480px) {
-  .ImageFullScreenPopup .image-container {
-    justify-content: center;
-  }
 }
 .ImageFullScreenPopup i {
   position: absolute;

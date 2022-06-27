@@ -1,6 +1,6 @@
 import * as constant from "../constants/homePageConstants";
 import { takeEvery, call, put } from "redux-saga/effects";
-import { UploadImage } from "../../utils/request";
+import { authPOST } from "../../utils/request";
 
 // action
 export const blogPostPOSTAction = (body) => {
@@ -13,18 +13,14 @@ export function* watchBlogPostPOST() {
 
 export function* workerBlogPostPOST({ body }) {
   try {
-    const { ImageArr, title, category, subTitle, content, tags } = body;
-    const ImageArrUrl = [];
+    yield put({ type: constant.BLOG_POST_INITIATE });
 
-    //  { ImageArr: (1) […], title: "titile", category: "Business", subTitle: "Sub Title", content: "<p>content</p>", tags: (1) […] }
-    ImageArr.map((n) => {
-      UploadImage(n).then((n) => {
-        console.log(n);
-        ImageArrUrl.push(n);
-      });
+    console.log(body, "body");
+
+    const { data } = yield call(() => {
+      return authPOST("blogs", body);
     });
-
-    console.log(ImageArrUrl);
+    yield put({ type: constant.BLOG_POST_SCUCESS, payload: data });
   } catch (error) {
     yield put({
       type: constant.BLOG_POST_FAIL,

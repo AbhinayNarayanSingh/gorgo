@@ -1,6 +1,7 @@
 import * as constant from "../constants/homePageConstants";
 import { takeEvery, call, put } from "redux-saga/effects";
-import { authPOST } from "../../utils/request";
+import { authPOST, postWithToken } from "../../utils/request";
+import { getCookie } from "../../utils/session";
 
 // action
 export const blogPostPOSTAction = (body) => {
@@ -15,11 +16,10 @@ export function* workerBlogPostPOST({ body }) {
   try {
     yield put({ type: constant.BLOG_POST_INITIATE });
 
-    console.log(body, "body");
-
     const { data } = yield call(() => {
-      return authPOST("blogs", body);
+      return postWithToken("blogs", body);
     });
+
     yield put({ type: constant.BLOG_POST_SCUCESS, payload: data });
   } catch (error) {
     yield put({

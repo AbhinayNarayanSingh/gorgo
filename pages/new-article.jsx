@@ -29,10 +29,8 @@ const NewArticle = () => {
   const [files, setFiles] = useState([
     { file: null, url: null },
     { file: null, url: null },
-    {
-      file: null,
-      url: "https://miro.medium.com/max/1400/1*popLGIUJaWpO7fuWAjlArA.jpeg",
-    },
+    { file: null, url: null },
+
     { file: null, url: null },
     { file: null, url: null },
     { file: null, url: null },
@@ -42,49 +40,41 @@ const NewArticle = () => {
     setError("");
   }, [title, subTitle, category, tags, content]);
 
-  const ImageArr = [];
-
-  const uploadImage = () => {
-    files.map(async (item) => {
-      if (item["url"] !== null) {
-        return ImageArr.push(item["url"]);
-      } else if (item["file"] !== null) {
-        const res = await UploadImage(item["file"]);
-        return ImageArr.push(res);
+  const submitHandler = async () => {
+    let fileUrls = [];
+    for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
+      if (files[fileIndex]["file"]) {
+        let url = await UploadImage(files[fileIndex]["file"]);
+        fileUrls.push(url);
+      } else if (files[fileIndex]["url"]) {
+        fileUrls.push(files[fileIndex]["url"]);
       }
-    });
-    console.log(ImageArr);
-  };
+    }
 
-  const submitHandler = () => {
-    uploadImage();
+    if (fileUrls.length === 0) {
+      return alert("Image Arr is empty");
+    } else if (title === "") {
+      return setError("title");
+    } else if (subTitle === "") {
+      return setError("subTitle");
+    } else if (category === "") {
+      return setError("category");
+    } else if (content === "") {
+      return setError("content");
+    } else if (tags.length <= 5) {
+      return setError("tags");
+    }
 
-    // if (ImageArr.length === 0) {
-    //   return alert("Image Arr is empty");
-    // } else
+    const formData = {
+      title: title,
+      subtitle: subTitle,
+      category: category,
+      banners: fileUrls,
+      content: content,
+      tags: tags,
+    };
 
-    // if (title === "") {
-    //   return setError("title");
-    // } else if (subTitle === "") {
-    //   return setError("subTitle");
-    // } else if (category === "") {
-    //   return setError("category");
-    // } else if (content === "") {
-    //   return setError("content");
-    // } else if (tags.length === 0) {
-    //   return setError("tags");
-    // }
-
-    // const formData = {
-    //   title: title,
-    //   subtitle: subTitle,
-    //   category: category,
-    //   banners: ImageArr,
-    //   content: content,
-    //   tags: tags,
-    // };
-
-    // dispatch(blogPostPOSTAction(formData));
+    dispatch(blogPostPOSTAction(formData));
   };
 
   return (
@@ -145,7 +135,10 @@ const NewArticle = () => {
                 error={error === "tags" ? true : false}
                 placeholder="Article Tags"
               />
-              <button className="btn-primary" onClick={() => submitHandler()}>
+              <button
+                className="btn-primary"
+                onClick={async () => submitHandler()}
+              >
                 Publish
               </button>
             </div>

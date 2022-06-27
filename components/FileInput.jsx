@@ -18,7 +18,7 @@ const FileInput = ({ value, setValue, index, id }) => {
       file: file,
       url: base64Url,
     };
-    console.log("file", file, "url", base64Url);
+
     setValue(valueIns);
   };
 
@@ -52,7 +52,7 @@ const FileInput = ({ value, setValue, index, id }) => {
         </label>
 
         <div className="user-action">
-          <i class="fa-solid fa-trash" onClick={() => handleRemoveFn()}></i>
+          <i className="fa-solid fa-trash" onClick={() => handleRemoveFn()}></i>
           <i
             className="fa-solid fa-expand"
             onClick={() => setFullImagePopup(true)}

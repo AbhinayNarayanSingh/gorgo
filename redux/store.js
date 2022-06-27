@@ -27,7 +27,7 @@ import { watchUserAuthentication } from "./actions/userAuthenticationAction";
 import { watchBlogPostPOST } from "./actions/blogPostAction";
 
 //
-import { userInfoFromLocalStorage } from "./initialState";
+import { userInfo } from "./initialState";
 
 const reducer = combineReducers({
   sources: sources,
@@ -43,7 +43,7 @@ const reducer = combineReducers({
 });
 
 const initialState = {
-  // auth: userInfoFromLocalStorage,
+  // auth: userInfo,
 };
 
 const sagaMiddleware = createSagaMiddleware();

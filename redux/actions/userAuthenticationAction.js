@@ -1,7 +1,7 @@
 import * as constant from "../constants/homePageConstants";
 import { takeEvery, call, put } from "redux-saga/effects";
 import { authPOST } from "../../utils/request";
-import { removeLocalStorage, setLocalStorage } from "../../utils/session";
+import { removeLocalStorage, setCookie } from "../../utils/session";
 
 // Action
 export const userSignInAuthenticationAction = (body) => {
@@ -29,7 +29,9 @@ export function* workerUserSignUpAuthentication({ body }) {
       return authPOST(`registration`, body);
     });
 
-    setLocalStorage("auth", data["data"]);
+    setCookie("token", data["data"]["token"]);
+    setCookie("email", data["data"]["email"]);
+    setCookie("username", data["data"]["username"]);
 
     yield put({
       type: constant.USER_AUTHENTICATION_SCUCESS,
@@ -50,7 +52,9 @@ export function* workerUserSignInAuthentication({ body }) {
       return authPOST(`login`, body);
     });
 
-    setLocalStorage("auth", data["data"]);
+    setCookie("token", data["data"]["token"]);
+    setCookie("email", data["data"]["email"]);
+    setCookie("username", data["data"]["username"]);
 
     yield put({
       type: constant.USER_AUTHENTICATION_SCUCESS,

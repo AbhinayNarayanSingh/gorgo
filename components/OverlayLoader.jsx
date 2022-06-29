@@ -1,9 +1,13 @@
 import Loader from "./Loader";
 
-const OverlayLoader = () => {
+const OverlayLoader = ({ children }) => {
   return (
-    <div className=" row overlay-loader">
-      <Loader />
+    <div className="overlay-loader">
+      {children ? (
+        <div className="loader-placeholder">{children}</div>
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };

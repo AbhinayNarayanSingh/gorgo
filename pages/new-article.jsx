@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 // component
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
+import Header from "../components/Header";
+import OverlayLoader from "../components/OverlayLoader";
+
 import Textarea from "../components/Textarea";
 import Input from "../components/Input";
 import TextEditor from "../components/TextEditor";
@@ -17,8 +21,13 @@ import { blogPostPOSTAction } from "../redux/actions/blogPostAction";
 import { UploadImage } from "../utils/request";
 
 const NewArticle = () => {
-  const dispatch = useDispatch();
+  const router = useRouter();
 
+  const { isUserIsAuthenticated } = useSelector((state) => state.auth);
+  const { status, blogPost } = useSelector((state) => state.blog);
+
+  const [userSubmitForPublish, setUserSubmitForPublish] = useState(false);
+  const dispatch = useDispatch();
   const [error, setError] = useState("");
 
   const [title, setTitle] = useState("");
@@ -37,23 +46,23 @@ const NewArticle = () => {
   ]);
 
   useEffect(() => {
+    if (status && userSubmitForPublish && status === "success") {
+      router.push(`article?q=${blogPost["blogId"]}`);
+    }
+  }, [status]);
+
+  useEffect(() => {
     setError("");
   }, [title, subTitle, category, tags, content]);
 
-  const submitHandler = async () => {
-    let fileUrls = [];
-    for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
-      if (files[fileIndex]["file"]) {
-        let url = await UploadImage(files[fileIndex]["file"]);
-        fileUrls.push(url);
-      } else if (files[fileIndex]["url"]) {
-        fileUrls.push(files[fileIndex]["url"]);
-      }
+  useEffect(() => {
+    if (!isUserIsAuthenticated) {
+      router.push("/signin?next=new-article");
     }
+  }, [isUserIsAuthenticated]);
 
-    if (fileUrls.length === 0) {
-      return alert("Image Arr is empty");
-    } else if (title === "") {
+  const submitHandler = async () => {
+    if (title === "") {
       return setError("title");
     } else if (subTitle === "") {
       return setError("subTitle");
@@ -61,8 +70,30 @@ const NewArticle = () => {
       return setError("category");
     } else if (content === "") {
       return setError("content");
-    } else if (tags.length <= 5) {
+    } else if (tags.length < 5) {
       return setError("tags");
+    }
+
+    let fileUrls = [];
+    try {
+      setUserSubmitForPublish(true);
+
+      for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
+        if (files[fileIndex]["file"]) {
+          let url = await UploadImage(files[fileIndex]["file"]);
+          fileUrls.push(url);
+        } else if (files[fileIndex]["url"]) {
+          fileUrls.push(files[fileIndex]["url"]);
+        }
+      }
+
+      if (fileUrls.length === 0) {
+        setUserSubmitForPublish(false);
+        return alert("Image Arr is empty");
+      }
+    } catch (error) {
+      setUserSubmitForPublish(false);
+      console.error(">>>>>>>>>>>>> error", error);
     }
 
     const formData = {
@@ -80,6 +111,9 @@ const NewArticle = () => {
   return (
     <>
       <Navigation />
+      <Header title="New Article" />
+      {userSubmitForPublish && <OverlayLoader />}
+
       <div className="container-fluid " style={{ backgroundColor: "#f8f9fa" }}>
         <div className="container editor-text-container">
           <div className="row justify-content-center ">
@@ -117,7 +151,15 @@ const NewArticle = () => {
               <Select
                 label={"Category"}
                 id={"Category"}
-                option={["Business", "Entertainment"]}
+                option={[
+                  "Business",
+                  "Entertainment",
+                  "General",
+                  "Health",
+                  "Science",
+                  "Sports",
+                  "Technology",
+                ]}
                 value={category}
                 setValue={setCategory}
                 error={error === "category" ? true : false}

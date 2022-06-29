@@ -30,11 +30,23 @@ const SignIn = () => {
     setValidationError(false);
   }, [email, password]);
 
+  const next = router.query.next;
+
+  switch (next) {
+    case "home":
+      next = "/";
+      break;
+    case "new-article":
+      next = "/new-article";
+      break;
+  }
+
   useEffect(() => {
     if (auth && auth["token"]) {
-      router.push("/");
+      router.push(next);
     }
   }, [auth]);
+
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -72,12 +84,12 @@ const SignIn = () => {
           <p>Invalid credentials! Try again</p>
         </Alert>
       )}
-
       <Header title="Sign In" />
       <Navigation />
+      {status && status === "initiate" ? <OverlayLoader /> : ""}
+
       <div className="container">
         <div className="row justify-content-center sign-container">
-          {status && status === "initiate" ? <OverlayLoader /> : ""}
           <div className="col-md-5">
             <h1>Sign In</h1>
 

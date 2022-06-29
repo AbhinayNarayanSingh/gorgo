@@ -56,7 +56,9 @@ const Navigation = () => {
           </div>
 
           <div
-            className={`nav-action-btn ${navigationToggel && `mobile-hide`}`}
+            className={`nav-action-btn ${!auth && "custom-padding"} ${
+              navigationToggel && `mobile-hide`
+            }`}
           >
             <i
               className="fa-solid fa-magnifying-glass"
@@ -71,7 +73,7 @@ const Navigation = () => {
               <>
                 <button
                   className="btn-secondary"
-                  onClick={() => router.push("/signin")}
+                  onClick={() => router.push("/signin?next=home")}
                 >
                   Login
                 </button>

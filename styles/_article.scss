@@ -1,0 +1,157 @@
+.article-container {
+  margin: 2rem 0;
+
+  h2.article_heading {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  img {
+    width: 100%;
+    margin: 1rem 0;
+    max-height: 400px;
+    object-fit: cover;
+  }
+
+  .tags {
+    font-size: 0.75rem;
+    line-height: 150%;
+    cursor: pointer;
+    margin: 1.5rem 0;
+    span {
+      margin: 0 0.5rem 0.5rem 0;
+      padding: 0.25rem 1rem;
+      border-radius: 20px;
+      display: inline-block;
+      border: 1px solid rgba($color: #000000, $alpha: 0.5);
+      color: rgba($color: #000000, $alpha: 0.6);
+      &:hover {
+        border-color: $p-color;
+        background-color: $p-color;
+        color: white;
+      }
+    }
+  }
+
+  .social-media {
+    display: flex;
+    i {
+      cursor: pointer;
+
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      padding: 0.5rem;
+      border-radius: 100%;
+      color: #d2d3d4;
+      border: 2px solid #d2d3d4;
+
+      &:hover {
+        color: $p-color;
+        border-color: $p-color;
+      }
+    }
+
+    .fa-solid.fa-heart {
+      color: $p-color;
+      border-color: $p-color;
+    }
+  }
+}
+
+h4.subtitle {
+  font-family: $font-family;
+  margin-bottom: 1rem;
+  color: gray;
+  font-size: 1.5rem;
+}
+
+.article-body {
+  p {
+    font-size: 15px;
+    margin-bottom: 0.75rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-size: 20px;
+    margin: 0.5rem 0 1rem;
+  }
+  li {
+    font-size: 15px;
+    margin-bottom: 0.5rem;
+  }
+
+  a {
+    color: $p-color;
+    font-weight: 500;
+  }
+}
+
+.article-author-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 5rem 0 2rem;
+  img {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 100%;
+    margin-top: -3rem;
+    border: 5px solid white;
+  }
+  background-color: #eeeff0;
+  border-radius: 5px 5px 10px 10px;
+  h2 {
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+  p {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 13px;
+    line-height: 18px;
+    width: 90%;
+    margin: 0.5rem 0 2rem;
+  }
+}
+
+.min-height {
+  min-height: 90vh;
+}
+
+.SocialMediaShareContainer {
+  position: fixed;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.653);
+  z-index: 1;
+}
+.SocialMediaShare {
+  border: 2rem solid white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  max-height: 400px;
+  overflow: scroll;
+
+  background-color: white;
+  margin-top: 10rem;
+  button {
+    display: flex;
+    padding: 2rem;
+    align-items: center;
+    svg {
+      margin-right: 1rem;
+    }
+  }
+}

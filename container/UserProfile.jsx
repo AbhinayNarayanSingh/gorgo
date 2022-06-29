@@ -12,14 +12,17 @@ const UserProfile = () => {
   return (
     <>
       <div className="nav-user-profile ">
-        <img
-          src={auth["profile"] || "/img/profile.jpg"}
-          alt=""
-          onClick={() => setToggel((toggel) => !toggel)}
-        />
+        <div className="auth">
+          <img
+            src={auth["profile"] || "/img/profile.jpg"}
+            alt=""
+            onClick={() => setToggel((toggel) => !toggel)}
+          />
+          <p className="auth-email">{auth && auth["email"]}</p>
+        </div>
         <div className={`user-action-option ${toggel ? "active" : ""}`}>
           <Link href="/new-article">New article</Link>
-          <Link href="/">Profile</Link>
+          <Link href="/signin?next=/">Profile</Link>
           <p onClick={() => dispatch(userSignOutAuthenticationAction())}>
             Logout
           </p>

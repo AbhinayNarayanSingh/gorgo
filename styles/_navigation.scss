@@ -116,7 +116,7 @@
     }
     .nav-link {
       position: absolute;
-      top: 180px;
+      top: 205px;
       left: 0;
       width: 100%;
 
@@ -157,10 +157,10 @@
       top: 80px;
       left: 0;
       width: 100%;
-      padding: 2rem 1rem;
+      padding: 0 1rem 0.5rem;
 
       display: flex;
-      justify-content: center;
+      // justify-content: center;
       button {
         width: 45%;
         margin: 0 0.5rem;
@@ -173,45 +173,82 @@
   }
 }
 
-.nav-user-profile {
-  display: flex;
-  img {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-    border-radius: 40px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-      rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+@media screen and (min-width: 1250px) {
+  .nav-user-profile {
+    display: flex;
+    img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 40px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    }
+    position: relative;
+
+    .user-action-option {
+      position: absolute;
+      top: 60px;
+      right: 0;
+      border-radius: 5px;
+      background-color: rgb(255, 255, 255);
+      padding: 0.5rem 2rem;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+      display: none;
+      width: 150px;
+
+      a,
+      p {
+        display: block;
+        font-size: 15px;
+        margin-bottom: 0.1rem;
+        cursor: pointer;
+
+        &:hover {
+          color: $p-color;
+        }
+      }
+    }
+    .user-action-option.active {
+      display: inline-block;
+    }
+    p.auth-email {
+      display: none;
+    }
   }
-  position: relative;
-
-  .user-action-option {
-    position: absolute;
-    top: 60px;
-    right: 0;
-    border-radius: 5px;
-    background-color: rgb(255, 255, 255);
-    padding: 0.5rem 2rem;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-
-    display: none;
-    width: 150px;
-
-    a,
-    p {
-      display: block;
-      font-size: 15px;
-      margin-bottom: 0.1rem;
-      cursor: pointer;
-
-      &:hover {
-        color: $p-color;
+}
+@media screen and (max-width: 1250px) {
+  .nav-user-profile {
+    .auth {
+      display: flex;
+      overflow: hidden;
+      img {
+        height: 50px;
+        margin-right: 1rem;
+        @media screen and (min-width: 480px) {
+          margin-left: 28px;
+        }
+      }
+      p.auth-email {
+        display: block;
+      }
+    }
+    .user-action-option {
+      display: flex;
+      flex-direction: column;
+      margin-top: 0.5rem;
+      a,
+      p {
+        font-weight: 500;
+        margin-left: 28px;
       }
     }
   }
-  .user-action-option.active {
-    display: inline-block;
+
+  .custom-padding {
+    padding: 39px 1rem 3.5rem !important;
   }
 }

@@ -20,10 +20,7 @@ export const removeCookie = (key) => {
 };
 
 export const getCookie = (key) => {
-  return process.browser ? getCookieFromBrowser(key) || "" : "";
-};
-const getCookieFromBrowser = (key) => {
-  return Cookies.get(key);
+  return process.browser ? Cookies.get(key) || "" : "";
 };
 
 export const setLocalStorage = (key, value) => {
@@ -36,4 +33,23 @@ export const getLocalStorage = (key) => {
 
 export const removeLocalStorage = (key) => {
   return localStorage.removeItem(key);
+};
+
+export const setUserInfoCookie = (data) => {
+  console.log(data);
+  Object.entries(data).map(([key, value]) => setCookie(key, value));
+};
+
+export const removeUserInfoCookie = () => {
+  const particular = [
+    "token",
+    "status",
+    "userId",
+    "email",
+    "username",
+    "profilePic",
+  ];
+  for (let i = 0; i <= particular.length; i++) {
+    removeCookie(particular[i]);
+  }
 };

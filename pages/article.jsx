@@ -23,22 +23,32 @@ import {
 import SocialMediaShare from "../components/SocialMediaShare";
 
 const article = () => {
+  // instance
   const dispatch = useDispatch();
   const router = useRouter();
+  const post_id = router.query.q;
 
+  // state access
   const { status, blogPost, likeDisLikeStatusError } = useSelector(
     (state) => state.blog
   );
+  const { isUserIsAuthenticated } = useSelector((state) => state.auth);
 
-  const post_id = router.query.q;
+  // state management
   const [pageLoadingComplete, setPageLoadingComplete] = useState(false);
   const [likeDislikeStateChange, setLikeDislikeStateChange] = useState(false);
+  const [socialMediaPopup, setSocialMediaPopup] = useState(false);
 
+  // submit handler
   const likeDislikeHandler = () => {
-    setLikeDislikeStateChange(
-      (likeDislikeStateChange) => !likeDislikeStateChange
-    );
-    dispatch(blogPostLikeDisLikeGETAction(post_id));
+    if (!isUserIsAuthenticated) {
+      router.push(`/signin?next=${router.asPath}`);
+    } else {
+      setLikeDislikeStateChange(
+        (likeDislikeStateChange) => !likeDislikeStateChange
+      );
+      dispatch(blogPostLikeDisLikeGETAction(post_id));
+    }
   };
 
   useEffect(() => {
@@ -72,8 +82,6 @@ const article = () => {
       }, 500);
     }
   }, [status]);
-
-  const [socialMediaPopup, setSocialMediaPopup] = useState(false);
 
   return (
     <>

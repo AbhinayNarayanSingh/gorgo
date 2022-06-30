@@ -22,7 +22,7 @@ const UserProfile = () => {
         </div>
         <div className={`user-action-option ${toggel ? "active" : ""}`}>
           <Link href="/new-article">New article</Link>
-          <Link href="/signin?next=/">Profile</Link>
+          <Link href="/profile">Profile</Link>
           <p onClick={() => dispatch(userSignOutAuthenticationAction())}>
             Logout
           </p>

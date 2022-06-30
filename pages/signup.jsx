@@ -17,6 +17,7 @@ import Alert from "../hoc/Alert";
 const SignUp = () => {
   const dispatch = useDispatch();
   const router = useRouter();
+  const next = router.query.next;
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -26,13 +27,22 @@ const SignUp = () => {
   const [validationError, setValidationError] = useState("");
   const [validationErrorMsg, setValidationErrorMsg] = useState("");
 
-  const { status, data } = useSelector((state) => state.auth);
+  const { status, auth, isUserIsAuthenticated } = useSelector(
+    (state) => state.auth
+  );
 
   const [serverError, setServerError] = useState(false);
 
   useEffect(() => {
     setValidationError(false);
   }, [name, email, password, confirmPassword]);
+
+  useEffect(() => {
+    if (auth && isUserIsAuthenticated) {
+      console.log("isUserIsAuthenticated");
+      router.push(next || "/");
+    }
+  }, [auth, isUserIsAuthenticated]);
 
   const submitHandler = (e) => {
     e.preventDefault();

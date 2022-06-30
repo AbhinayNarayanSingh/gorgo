@@ -1,7 +1,13 @@
 import * as constant from "../constants/homePageConstants";
 import { takeEvery, call, put } from "redux-saga/effects";
 import { authPOST } from "../../utils/request";
-import { removeLocalStorage, setCookie } from "../../utils/session";
+import {
+  getCookie,
+  removeLocalStorage,
+  removeUserInfoCookie,
+  setCookie,
+  setUserInfoCookie,
+} from "../../utils/session";
 
 // Action
 export const userSignInAuthenticationAction = (body) => {
@@ -16,10 +22,15 @@ export const userSignOutAuthenticationAction = () => {
   return { type: "USER_SIGN_OUT_SAGA" };
 };
 
+export const userSessionResumeAction = () => {
+  return { type: "RESUME_SESSION" };
+};
+
 export function* watchUserAuthentication() {
   yield takeEvery("USER_SIGN_IN_SAGA", workerUserSignInAuthentication);
   yield takeEvery("USER_SIGN_UP_SAGA", workerUserSignUpAuthentication);
   yield takeEvery("USER_SIGN_OUT_SAGA", workerUserSignOutAuthentication);
+  yield takeEvery("RESUME_SESSION", workerUserSessionResume);
 }
 
 export function* workerUserSignUpAuthentication({ body }) {
@@ -29,9 +40,7 @@ export function* workerUserSignUpAuthentication({ body }) {
       return authPOST(`registration`, body);
     });
 
-    setCookie("token", data["data"]["token"]);
-    setCookie("email", data["data"]["email"]);
-    setCookie("username", data["data"]["username"]);
+    setUserInfoCookie(data["data"]);
 
     yield put({
       type: constant.USER_AUTHENTICATION_SCUCESS,
@@ -51,10 +60,7 @@ export function* workerUserSignInAuthentication({ body }) {
     const { data } = yield call(() => {
       return authPOST(`login`, body);
     });
-
-    setCookie("token", data["data"]["token"]);
-    setCookie("email", data["data"]["email"]);
-    setCookie("username", data["data"]["username"]);
+    setUserInfoCookie(data["data"]);
 
     yield put({
       type: constant.USER_AUTHENTICATION_SCUCESS,
@@ -71,10 +77,34 @@ export function* workerUserSignInAuthentication({ body }) {
 export function* workerUserSignOutAuthentication() {
   try {
     removeLocalStorage("auth");
+    removeUserInfoCookie();
 
     yield put({
       type: constant.USER_SIGN_OUT_SCUCESS,
       payload: [],
+    });
+  } catch (error) {
+    yield put({
+      type: constant.USER_AUTHENTICATION_FAIL,
+      payload: error.message,
+    });
+  }
+}
+
+export function* workerUserSessionResume() {
+  try {
+    yield put({ type: constant.USER_AUTHENTICATION_INITIATE });
+    const data = {
+      token: getCookie("token"),
+      status: getCookie("status"),
+      userId: getCookie("userId"),
+      email: getCookie("email"),
+      username: getCookie("username"),
+      profilePic: getCookie("profilePic"),
+    };
+    yield put({
+      type: constant.USER_AUTHENTICATION_SCUCESS,
+      payload: data,
     });
   } catch (error) {
     yield put({

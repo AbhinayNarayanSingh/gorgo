@@ -104,7 +104,7 @@
   height: $size;
   width: $size;
   padding: 0;
-  margin: 0 0 1rem;
+  margin: 1rem 0;
 
   .file_input_label_img {
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
@@ -113,7 +113,6 @@
     width: $size;
     object-fit: cover;
   }
-
   input {
     display: none;
   }
@@ -139,6 +138,66 @@
         opacity: 1;
       }
     }
+  }
+}
+
+.PrimaryFileInput {
+  $size: 100%;
+  $height: 230px;
+  width: $size;
+  padding: 0;
+  margin: 1rem 0;
+
+  label {
+    width: 100%;
+  }
+
+  p.label {
+    font-size: 14px;
+    margin-bottom: 0.4rem;
+  }
+  .file_input_label_img {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    border-radius: 5px;
+    height: $height;
+    width: $size;
+    object-fit: cover;
+  }
+  input {
+    display: none;
+  }
+  position: relative;
+
+  .user-action {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    i {
+      color: rgb(0, 0, 0);
+      font-size: 0.8rem;
+      margin: 0 0.25rem 0.25rem;
+      opacity: 0.3;
+
+      cursor: pointer;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.PrimaryFileInput.square-200 {
+  $square: 200px;
+  width: $square;
+
+  .file_input_label_img {
+    height: $square;
+    width: $square;
   }
 }
 

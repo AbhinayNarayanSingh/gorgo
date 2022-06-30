@@ -15,6 +15,8 @@ const Navigation = () => {
   const router = useRouter();
   const category = router.query.category;
 
+  // console.warn(router.asPath);
+
   return (
     <>
       <div className="container-fluid nav">
@@ -73,13 +75,13 @@ const Navigation = () => {
               <>
                 <button
                   className="btn-secondary"
-                  onClick={() => router.push("/signin?next=home")}
+                  onClick={() => router.push(`/signin?next=${router.asPath}`)}
                 >
                   Login
                 </button>
                 <button
                   className="btn-primary"
-                  onClick={() => router.push("/signup")}
+                  onClick={() => router.push(`/signup?next=${router.asPath}`)}
                 >
                   Register
                 </button>

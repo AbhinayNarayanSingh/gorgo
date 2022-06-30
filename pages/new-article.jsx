@@ -57,7 +57,7 @@ const NewArticle = () => {
 
   useEffect(() => {
     if (!isUserIsAuthenticated) {
-      router.push("/signin?next=new-article");
+      router.push(`/signin?next=${router.asPath}`);
     }
   }, [isUserIsAuthenticated]);
 

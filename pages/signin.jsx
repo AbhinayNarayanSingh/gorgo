@@ -8,9 +8,10 @@ import Navigation from "../components/Navigation";
 import Input from "../components/Input";
 import Header from "../components/Header";
 import OverlayLoader from "../components/OverlayLoader";
-import { userSignInAuthenticationAction } from "../redux/actions/userAuthenticationAction";
 import Alert from "../hoc/Alert";
 
+// action
+import { userSignInAuthenticationAction } from "../redux/actions/userAuthenticationAction";
 // container
 
 const SignIn = () => {
@@ -32,18 +33,9 @@ const SignIn = () => {
 
   const next = router.query.next;
 
-  switch (next) {
-    case "home":
-      next = "/";
-      break;
-    case "new-article":
-      next = "/new-article";
-      break;
-  }
-
   useEffect(() => {
     if (auth && auth["token"]) {
-      router.push(next);
+      router.push(next || "/");
     }
   }, [auth]);
 

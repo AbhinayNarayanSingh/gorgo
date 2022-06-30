@@ -925,7 +925,7 @@ h5 span span {
   height: 100px;
   width: 100px;
   padding: 0;
-  margin: 0 0 1rem;
+  margin: 1rem 0;
   position: relative;
 }
 .FileInput .file_input_label_img {
@@ -957,6 +957,58 @@ h5 span span {
 }
 .FileInput .user-action i:hover {
   opacity: 1;
+}
+
+.PrimaryFileInput {
+  width: 100%;
+  padding: 0;
+  margin: 1rem 0;
+  position: relative;
+}
+.PrimaryFileInput label {
+  width: 100%;
+}
+.PrimaryFileInput p.label {
+  font-size: 14px;
+  margin-bottom: 0.4rem;
+}
+.PrimaryFileInput .file_input_label_img {
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  border-radius: 5px;
+  height: 230px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.PrimaryFileInput input {
+  display: none;
+}
+.PrimaryFileInput .user-action {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.PrimaryFileInput .user-action i {
+  color: rgb(0, 0, 0);
+  font-size: 0.8rem;
+  margin: 0 0.25rem 0.25rem;
+  opacity: 0.3;
+  cursor: pointer;
+}
+.PrimaryFileInput .user-action i:hover {
+  opacity: 1;
+}
+
+.PrimaryFileInput.square-200 {
+  width: 200px;
+}
+.PrimaryFileInput.square-200 .file_input_label_img {
+  height: 200px;
+  width: 200px;
 }
 
 .tag-input .tags {
@@ -1029,6 +1081,135 @@ select.error:focus {
   .sign-container {
     min-height: 50vh;
   }
+}
+
+.user-profile-page {
+  margin: 0.25rem 0 1rem;
+  height: 350px;
+}
+.user-profile-page .background-cover {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  padding: 0;
+}
+.user-profile-page .background-cover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 1;
+}
+.user-profile-page .background-cover img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.user-profile-page .profile {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin: 0 5rem;
+  padding: 0;
+  top: 0;
+  z-index: 2;
+}
+.user-profile-page .profile img {
+  height: 150px;
+  width: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 100%;
+  border: 10px solid white;
+}
+.user-profile-page .profile .user-details {
+  margin-left: 5rem;
+}
+.user-profile-page .profile .user-details h2 {
+  color: white;
+  font-weight: 600;
+  font-size: 3rem;
+  margin: 0.25rem 0 0.5rem;
+}
+.user-profile-page .profile .user-details h3 {
+  color: white;
+  font-size: 13px;
+}
+.user-profile-page .profile .user-details h3 span i {
+  color: #029e74;
+  margin-left: 0.25rem;
+}
+.user-profile-page .profile .user-details p {
+  color: white;
+}
+@media screen and (max-width: 993px) {
+  .user-profile-page {
+    height: 400px;
+  }
+  .user-profile-page .profile {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    padding: 3rem 1rem;
+  }
+  .user-profile-page .profile .user-details {
+    text-align: center;
+    margin-left: 0;
+  }
+  .user-profile-page .profile .user-details h2 {
+    font-size: 2rem;
+    margin: 0.25rem 0;
+  }
+  .user-profile-page .profile .user-details h3 {
+    margin-top: 1rem;
+  }
+}
+
+.toggel-nav .col {
+  text-align: center;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.toggel-nav .col:hover {
+  background-color: whitesmoke;
+}
+.toggel-nav .col:hover p {
+  color: #029e74;
+}
+.toggel-nav .col.active {
+  border-color: #029e74;
+}
+.toggel-nav .col.active p {
+  color: #029e74;
+}
+
+.ProfileContainer {
+  padding: 2rem;
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  margin: 1rem 0;
+}
+.ProfileContainer .row {
+  margin-bottom: 0.5rem;
+  align-items: center;
+}
+.ProfileContainer .row h3 {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.25rem;
+}
+.ProfileContainer .row p {
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .editor-text-container {

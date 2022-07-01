@@ -22,7 +22,7 @@ const Profile = () => {
     if (!isUserIsAuthenticated) {
       router.push(`/signin?next=${router.asPath}`);
     }
-  }, [isUserIsAuthenticated]);
+  }, [isUserIsAuthenticated, router]);
   return (
     <div>
       <>

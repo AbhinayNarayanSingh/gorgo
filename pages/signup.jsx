@@ -43,7 +43,7 @@ const SignUp = () => {
     if (auth && isUserIsAuthenticated) {
       router.push(next || "/");
     }
-  }, [auth, isUserIsAuthenticated]);
+  }, [auth, isUserIsAuthenticated, next, router]);
 
   const submitHandler = (e) => {
     e.preventDefault();

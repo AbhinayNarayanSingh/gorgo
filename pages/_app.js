@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
     if (auth && !isUserIsAuthenticated) {
       dispatch(userSessionResumeAction());
     }
-  }, []);
+  }, [dispatch, isUserIsAuthenticated]);
   return (
     <>
       <Provider store={store}>

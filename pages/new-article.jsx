@@ -49,7 +49,7 @@ const NewArticle = () => {
     if (status && userSubmitForPublish && status === "success") {
       router.push(`article?q=${blogPost["blogId"]}`);
     }
-  }, [status]);
+  }, [status, router, blogPost, userSubmitForPublish]);
 
   useEffect(() => {
     setError("");
@@ -59,7 +59,7 @@ const NewArticle = () => {
     if (!isUserIsAuthenticated) {
       router.push(`/signin?next=${router.asPath}`);
     }
-  }, [isUserIsAuthenticated]);
+  }, [isUserIsAuthenticated, router]);
 
   const submitHandler = async () => {
     if (title === "") {

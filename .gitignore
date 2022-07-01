@@ -33,4 +33,4 @@ yarn-error.log*
 
 
 /saga_learning.js
-# *.scss
+*.scss

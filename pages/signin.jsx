@@ -39,7 +39,7 @@ const SignIn = () => {
     if (auth && auth["token"]) {
       router.push(next || "/");
     }
-  }, [auth]);
+  }, [auth, next, router]);
 
   const submitHandler = (e) => {
     e.preventDefault();

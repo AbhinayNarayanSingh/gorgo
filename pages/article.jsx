@@ -55,7 +55,7 @@ const Article = () => {
     if (post_id) {
       dispatch(blogPostGETAction(post_id));
     }
-  }, [post_id]);
+  }, [post_id, dispatch]);
 
   useEffect(() => {
     if (

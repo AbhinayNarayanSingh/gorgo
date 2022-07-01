@@ -38,11 +38,11 @@ const Category = () => {
     if (category) {
       dispatch(categoryPostGETAction(category, limit));
     }
-  }, [dispatch, category]);
+  }, [dispatch, category, limit]);
 
   useEffect(() => {
     dispatch(categoryPostUpdateGETAction(category, limit));
-  }, [dispatch, limit]);
+  }, [dispatch, limit, category]);
 
   const { t } = useTranslation("common");
 

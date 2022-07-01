@@ -225,6 +225,44 @@
     padding: 39px 1rem 3.5rem !important;
   }
 }
+.i-language-container {
+  position: relative;
+}
+.i-language-container img.i-language {
+  height: 24px;
+  margin-right: 0.5rem;
+}
+.i-language-container .language-popup {
+  position: absolute;
+  right: 0;
+  width: 125px;
+  text-align: center;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: none;
+}
+.i-language-container .language-popup p {
+  margin-bottom: 0.35rem;
+  cursor: pointer;
+}
+.i-language-container .language-popup p:hover {
+  color: #029e74;
+}
+.i-language-container .language-popup p:nth-last-of-type(1) {
+  margin-bottom: 0;
+}
+.i-language-container .language-popup.active {
+  display: block;
+}
+@media screen and (max-width: 1250px) {
+  .i-language-container {
+    display: none;
+  }
+}
+
 footer .section-1 .row {
   padding: 4rem 0 5rem;
 }

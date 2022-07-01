@@ -1,22 +1,26 @@
 import Image from "next/image";
 import React from "react";
+import useTranslation from "next-translate/useTranslation";
+
 
 const Footer = () => {
+
+  const {t} = useTranslation("common")
   const data = [
     {
       key: 1,
-      h2: "Discover Gorgo",
-      p: "Welcome to Gorgo, an author oriented theme.A place where words matter. Discover without further ado our countless community stories.",
+      h2: t("discover_gorgo"),
+      p: t("discover_gorgo_content"),
     },
     {
       key: 2,
-      h2: "Build great relations",
-      p: "Explore all the content form Gorgo community network. Forums, Groups, Members, Posts, Social Wall and many more. You can never get tired of it!",
+      h2: t("build_great_relations"),
+      p: t("build_great_relations_content")
     },
     {
       key: 3,
-      h2: "Become a member",
-      p: "Get unlimited access to the best articles on Gorgo and support our  lovely authors. Upgrade Now",
+      h2: t("become_a_member"),
+      p: t("become_a_member_content"),
     },
   ];
   return (

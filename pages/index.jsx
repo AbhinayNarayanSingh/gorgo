@@ -98,9 +98,9 @@ const Home = () => {
               </div>
 
               <div className="promotion-cover-banner">
-                <h2>{t("Get Unlimited Access Now")}</h2>
-                <p>{t("Get_Unlimited_Access_Now_Detail")}</p>
-                <button className="btn-primary">{t("Upgrade Now")}</button>
+                <h2>{t("get_unlimited_access_now")}</h2>
+                <p>{t("get_unlimited_access_now_detail")}</p>
+                <button className="btn-primary">{t("upgrade_now")}</button>
               </div>
 
               <div className="section-2">
@@ -118,8 +118,8 @@ const Home = () => {
                       onClick={() => setPage((page) => page + 1)}
                     >
                       {status && status === "initiate"
-                        ? "Loading..."
-                        : "Read more"}{" "}
+                        ? `${t("loading")}...`
+                        : t("read_more")}{" "}
                     </button>
                   </>
                 )}
@@ -136,7 +136,7 @@ const Home = () => {
 
               <div className="popular-post-container sidebar-content-container">
                 <div className="heading">
-                  <h2>Popular Post</h2>
+                  <h2>{t("popular_post")}</h2>
                 </div>
                 <div className="body">
                   <PopularPostSideBar hero={hero} />
@@ -147,7 +147,7 @@ const Home = () => {
 
               <div className="source-card-container sidebar-content-container">
                 <div className="heading">
-                  <h2>Our News Sources</h2>
+                  <h2>{t("our_news_sources")}</h2>
                 </div>
                 <div className="body">
                   <div className="row source-container">
@@ -172,10 +172,10 @@ const Home = () => {
         style={{ background: "#F5F6F7", padding: "1rem" }}
       >
         <div className="container focus-content">
-          <h2>{t("Focus on your content")}</h2>
+          <h2>{t("focus_on_your_content")}</h2>
           <p>
-            {t("Discover the little things that")}
-            <span> {t("matter to you")}</span>
+            {t("discover_the_little_things_that")}
+            <span> {t("matter_to_you")}</span>
           </p>
           <div className="content-type-container">
             {contentType &&
@@ -189,16 +189,16 @@ const Home = () => {
               ))}
           </div>
           <Link href="/explore">
-            <button>Discover now</button>
+            <button>{t("discover_now")}</button>
           </Link>
         </div>
       </div>
 
       <div className="section-4 container-fluid">
         <div className="container">
-          <h2>{t("The heart of Gorgo Community")}</h2>
+          <h2>{t("the_heart_of_gorgo_community")}</h2>
           <p>
-            {t("Some of Our Popular")} <span>{t("Authors")}</span>
+            {t("some_of_our_popular")} <span>{t("authors")}</span>
           </p>
           <div className="row">
             {author &&
@@ -208,11 +208,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <HeroFooter
-        h2={t("Reading is essential for those who seek to rise")}
-        span={t("above the ordinary")}
-        link="/"
-      />
+      <HeroFooter />
       <Footer />
     </div>
   );

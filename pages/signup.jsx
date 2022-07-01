@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
 
 // component
 import Header from "../components/Header";
@@ -18,6 +19,7 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const next = router.query.next;
+  const { t } = useTranslation("common");
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -39,7 +41,6 @@ const SignUp = () => {
 
   useEffect(() => {
     if (auth && isUserIsAuthenticated) {
-      console.log("isUserIsAuthenticated");
       router.push(next || "/");
     }
   }, [auth, isUserIsAuthenticated]);
@@ -103,12 +104,12 @@ const SignUp = () => {
           {status && status === "initiate" ? <OverlayLoader /> : ""}
 
           <div className="col-md-5">
-            <h1>Sign Up</h1>
+            <h1>{t("sign_up")}</h1>
 
             <form className="sign-form" onSubmit={submitHandler}>
               <Input
-                label="Name"
-                placeholder="Enter your name"
+                label={t("name")}
+                placeholder={t("enter_your_name")}
                 id="text"
                 value={name}
                 setValue={setName}
@@ -117,8 +118,8 @@ const SignUp = () => {
                 errorMsg={validationErrorMsg}
               />
               <Input
-                label="Email Address"
-                placeholder="Enter your email"
+                label={t("email_address")}
+                placeholder={t("enter_your_email")}
                 id="email"
                 value={email}
                 setValue={setEmail}
@@ -127,8 +128,8 @@ const SignUp = () => {
                 errorMsg={validationErrorMsg}
               />
               <Input
-                label="Password"
-                placeholder="Enter your password"
+                label={t("password")}
+                placeholder={t("enter_your_password")}
                 id="Password"
                 value={password}
                 setValue={setPassword}
@@ -137,8 +138,8 @@ const SignUp = () => {
                 errorMsg={validationErrorMsg}
               />
               <Input
-                label="Confirm password"
-                placeholder="Re-enter your password"
+                label={t("confirm_password")}
+                placeholder={t("re_enter_your_password")}
                 id="Password"
                 value={confirmPassword}
                 setValue={setConfirmPassword}
@@ -146,13 +147,13 @@ const SignUp = () => {
                 error={validationError === "confirmPassword"}
                 errorMsg={validationErrorMsg}
               />
-              <button className="btn-primary">Sign Up</button>
+              <button className="btn-primary">{t("sign_up")}</button>
             </form>
             <button
               className="btn-secondary"
               onClick={() => router.push("/signin")}
             >
-              Sign In Insted
+              {t("sign_in_insted")}
             </button>
           </div>
         </div>

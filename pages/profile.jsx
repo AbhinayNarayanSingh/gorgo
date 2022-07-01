@@ -32,10 +32,10 @@ const Profile = () => {
       <div className="container" style={{ padding: 0 }}>
         <div className="user-profile-page row">
           <div className="col-12 background-cover">
-            <img src="./img/cover.png" alt="" />
+            <img src="../img/cover.png" alt="" />
 
             <div className="profile">
-              <img src="./img/blank-profile.jpeg" alt="" />
+              <img src="../img/blank-profile.jpeg" alt="" />
 
               <div className="user-details">
                 <h3>

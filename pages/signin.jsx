@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
 
 // component
 import Footer from "../components/Footer";
@@ -17,6 +18,7 @@ import { userSignInAuthenticationAction } from "../redux/actions/userAuthenticat
 const SignIn = () => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const { t } = useTranslation("common");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -83,12 +85,12 @@ const SignIn = () => {
       <div className="container">
         <div className="row justify-content-center sign-container">
           <div className="col-md-5">
-            <h1>Sign In</h1>
+            <h1>{t("sign_in")}</h1>
 
             <form className="sign-form" onSubmit={submitHandler}>
               <Input
-                label="Email Address"
-                placeholder="Enter your email"
+                label={t("email_address")}
+                placeholder={t("enter_your_email")}
                 id="email"
                 value={email}
                 setValue={setEmail}
@@ -97,8 +99,8 @@ const SignIn = () => {
                 errorMsg={validationErrorMsg}
               />
               <Input
-                label="Password"
-                placeholder="Enter your password"
+                label={t("password")}
+                placeholder={t("enter_your_password")}
                 id="Password"
                 value={password}
                 setValue={setPassword}
@@ -106,13 +108,13 @@ const SignIn = () => {
                 error={validationError === "password"}
                 errorMsg={validationErrorMsg}
               />
-              <button className="btn-primary">Sign In</button>
+              <button className="btn-primary">{t("sign_in")}</button>
             </form>
             <button
               className="btn-secondary"
               onClick={() => router.push("/signup")}
             >
-              Quick Sign Up!
+              {t("quick_sign_up")}
             </button>
           </div>
         </div>

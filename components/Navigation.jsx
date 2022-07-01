@@ -2,21 +2,26 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
 
 import Image from "next/image";
 import UserProfile from "../container/UserProfile";
 
 const Navigation = () => {
-  const { contentType } = useSelector((state) => state.contentTypes);
-
-  const { auth } = useSelector((state) => state.auth);
-
-  const [navigationToggel, setNavigationToggel] = useState(true);
   const router = useRouter();
   const category = router.query.category;
+  const { t } = useTranslation("common");
 
-  // console.warn(router.asPath);
+  const [navigationToggel, setNavigationToggel] = useState(true);
+  const [languageToggel, setLanguageToggel] = useState(false);
 
+  const { contentType } = useSelector((state) => state.contentTypes);
+  const { auth } = useSelector((state) => state.auth);
+
+  const onChangeLanguage = (lang) => {
+    setLanguageToggel(false);
+    router.push(router.asPath, undefined, { locale: lang });
+  };
   return (
     <>
       <div className="container-fluid nav">
@@ -67,6 +72,24 @@ const Navigation = () => {
               onClick={() => router.push("/explore")}
             ></i>
 
+            <div className="i-language-container">
+              <img
+                src="../../img/google.png"
+                alt=""
+                className="i-language"
+                onClick={() =>
+                  setLanguageToggel((languageToggel) => !languageToggel)
+                }
+              />
+
+              <div
+                className={`language-popup ${languageToggel ? "active" : ""}`}
+              >
+                <p onClick={() => onChangeLanguage("en")}>English</p>
+                <p onClick={() => onChangeLanguage("hi")}>Hindi हिन्दी</p>
+              </div>
+            </div>
+
             {auth && auth["email"] ? (
               <div className="user-profile">
                 <UserProfile />
@@ -77,13 +100,13 @@ const Navigation = () => {
                   className="btn-secondary"
                   onClick={() => router.push(`/signin?next=${router.asPath}`)}
                 >
-                  Login
+                  {t("login")}
                 </button>
                 <button
                   className="btn-primary"
                   onClick={() => router.push(`/signup?next=${router.asPath}`)}
                 >
-                  Register
+                  {t("register")}
                 </button>
               </>
             )}

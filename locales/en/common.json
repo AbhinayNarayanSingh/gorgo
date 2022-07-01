@@ -1,15 +1,50 @@
 {
-  "Get Unlimited Access Now": "Get Unlimited Access Now",
-  "Get_Unlimited_Access_Now_Detail": "Get unlimited access to the best articles on Gorgo and support our lovely authors by subscribing to the PRO or VIP package.",
-  "Upgrade Now": "Upgrade Now",
-  "Become Pro": "Become Pro",
-  "Become_Pro_Details": "Get unlimited access to the best articles and support our lovely authors.",
-  "Focus on your content": "Focus on your content",
-  "The heart of Gorgo Community": "The heart of Gorgo Community",
-  "Discover the little things that": "Discover the little things that",
-  "matter to you": "matter to you.",
-  "Some of Our Popular": "Some of Our Popular",
-  "Authors": "Authors",
-  "Reading is essential for those who seek to rise": "Reading is essential for those who seek to rise",
-  "above the ordinary": "above the ordinary"
+  "get_unlimited_access_now": "Get Unlimited Access Now",
+  "get_unlimited_access_now_detail": "Get unlimited access to the best articles on Gorgo and support our lovely authors by subscribing to the PRO or VIP package.",
+  "discover_now": "Discover now",
+
+  "become_pro": "Become Pro",
+  "become_pro_details": "Get unlimited access to the best articles and support our lovely authors.",
+  "upgrade_now": "Upgrade Now",
+
+  "focus_on_your_content": "Focus on your content",
+  "discover_the_little_things_that": "Discover the little things that",
+  "matter_to_you": "matter to you.",
+
+  "the_heart_of_gorgo_community": "The heart of Gorgo Community",
+  "some_of_our_popular": "Some of Our Popular",
+  "authors": "Authors",
+
+  "reading_is_essential_for_those_who_seek_to_rise": "Reading is essential for those who seek to rise",
+  "above_the_ordinary": "above the ordinary",
+  "get_started": "Get started",
+
+  "discover_gorgo": "Discover Gorgo",
+  "discover_gorgo_content": "Welcome to Gorgo, an author oriented theme.A place where words matter. Discover without further ado our countless community stories.",
+  "build_great_relations": "Build great relations",
+  "build_great_relations_content": "Explore all the content form Gorgo community network. Forums, Groups, Members, Posts, Social Wall and many more. You can never get tired of it!",
+  "become_a_member": "Become a member",
+  "become_a_member_content": "Get unlimited access to the best articles on Gorgo and support our lovely authors. Upgrade Now",
+  "read_more": "Read more",
+  "loading": "Loading",
+
+  "login": "Login",
+  "register": "Register",
+  "sign_in": "Sign In",
+  "sign_up": "Sign Up",
+
+  "email_address": "Email Address",
+  "password": "Password",
+  "confirm_password": "Confirm password",
+  "name": "Name",
+  "quick_sign_up": "Quick Sign Up!",
+  "sign_in_insted": "Sign In Insted",
+
+  "enter_your_name": "Enter your name",
+  "enter_your_email": "Enter your email",
+  "re_enter_your_password": "Re-enter your password",
+  "enter_your_password": "Enter your password",
+
+  "popular_post": "Popular Post",
+  "our_news_sources": "Our News Sources"
 }

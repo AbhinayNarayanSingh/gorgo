@@ -1,15 +1,50 @@
 {
-  "Get Unlimited Access Now": "अभी असीमित एक्सेस प्राप्त करें",
-  "Get_Unlimited_Access_Now_Detail": "Gorgo पर सर्वश्रेष्ठ लेखों तक असीमित पहुंच प्राप्त करें और प्रो या वीआईपी पैकेज की सदस्यता लेकर हमारे प्यारे लेखकों का समर्थन करें।",
-  "Upgrade Now": "अभी अपग्रेड करें",
-  "Become Pro": "प्रो सदस्य बनें",
-  "Become_Pro_Details": "सर्वोत्तम लेखों तक असीमित पहुंच प्राप्त करें और हमारे प्यारे लेखकों का समर्थन करें।",
-  "Focus on your content": "अपनी सामग्री पर ध्यान दें",
-  "The heart of Gorgo Community": "गोर्गो समुदाय का दिल",
-  "Discover the little things that": "छोटी-छोटी चीजों की खोज करें",
-  "matter to you": "आपके लिए मायने रखता है।",
-  "Some of Our Popular": "हमारे कुछ लोकप्रिय",
-  "Authors": "लेखक",
-  "Reading is essential for those who seek to rise": "जो उठना चाहते हैं उनके लिए पढ़ना जरूरी है",
-  "above the ordinary": "सामान्य से ऊपर"
+  "get_unlimited_access_now": "अभी असीमित एक्सेस प्राप्त करें",
+  "get_unlimited_access_now_detail": "Gorgo पर सर्वश्रेष्ठ लेखों तक असीमित पहुंच प्राप्त करें और प्रो या वीआईपी पैकेज की सदस्यता लेकर हमारे प्यारे लेखकों का समर्थन करें।",
+  "discover_now": "अभी खोजें",
+
+  "become_pro": "प्रो सदस्य बनें",
+  "become_pro_details": "सर्वोत्तम लेखों तक असीमित पहुंच प्राप्त करें और हमारे प्यारे लेखकों का समर्थन करें।",
+  "upgrade_now": "अभी अपग्रेड करें",
+
+  "focus_on_your_content": "अपनी सामग्री पर ध्यान दें",
+  "discover_the_little_things_that": "छोटी-छोटी चीजों की खोज करें",
+  "matter_to_you": "आपके लिए मायने रखता है।",
+
+  "the_heart_of_gorgo_community": "गोर्गो समुदाय का दिल",
+  "some_of_our_popular": "हमारे कुछ लोकप्रिय",
+  "authors": "लेखक",
+  "reading_is_essential_for_those_who_seek_to_rise": "जो उठना चाहते हैं उनके लिए पढ़ना जरूरी है",
+  "above_the_ordinary": "सामान्य से ऊपर",
+  "get_started": "शुरू हो जाओ",
+
+  "discover_gorgo": "गोर्गो की खोज करें",
+  "discover_gorgo_content": "एक लेखक उन्मुख विषय गोर्गो में आपका स्वागत है। एक जगह जहां शब्द मायने रखते हैं। आगे की हलचल के बिना हमारी अनगिनत सामुदायिक कहानियों की खोज करें।",
+  "build_great_relations": "महान संबंध बनाएं",
+  "build_great_relations_content": "गोर्गो कम्युनिटी नेटवर्क के सभी कंटेंट को एक्सप्लोर करें। फ़ोरम, समूह, सदस्य, पोस्ट, सामाजिक दीवार और भी बहुत कुछ। आप इससे कभी नहीं थक सकते!",
+  "become_a_member": "सदस्य बने",
+  "become_a_member_content": "गोर्गो पर सर्वश्रेष्ठ लेखों तक असीमित पहुंच प्राप्त करें और हमारे प्यारे लेखकों का समर्थन करें। अभी अपग्रेड करें",
+  "read_more": "अधिक पढ़ें",
+  "loading": "लोड हो रहा है",
+
+  "login": "लॉग इन करें",
+  "register": "रजिस्टर करें",
+
+  "sign_in": "साइन इन करें",
+  "sign_up": "साइन अप करें",
+
+  "confirm_password": "पासवर्ड की पुष्टि कीजिये",
+  "name": "नाम",
+  "email_address": "ईमेल पता",
+  "password": "पासवर्ड",
+  "quick_sign_up": "त्वरित साइन अप!",
+  "sign_in_insted": "इसके बजाय साइन इन करें",
+
+  "enter_your_name": "अपना नाम दर्ज करें",
+  "re_enter_your_password": "दुबारा पासवडृ  िलखो",
+  "enter_your_password": "अपना पासवर्ड डालें",
+  "enter_your_email": "अपना ईमेल दर्ज करें",
+
+  "popular_post": "लोकप्रिय पोस्ट",
+  "our_news_sources": "हमारे समाचार स्रोत"
 }

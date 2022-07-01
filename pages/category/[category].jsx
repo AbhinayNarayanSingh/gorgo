@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
+import useTranslation from "next-translate/useTranslation";
 
 // component
 import Footer from "../../components/Footer";
@@ -43,6 +44,8 @@ const Category = () => {
     dispatch(categoryPostUpdateGETAction(category, limit));
   }, [dispatch, limit]);
 
+  const { t } = useTranslation("common");
+
   return (
     <div>
       <Header title={`${category} - Gorge`} />
@@ -76,8 +79,8 @@ const Category = () => {
                   className={"btn-plain"}
                 >
                   {(status && status === "initiate") || !post
-                    ? "Loading..."
-                    : "Read more"}
+                    ? `${t("loading")}...`
+                    : t("read_more")}{" "}
                 </button>
               </>
             )}

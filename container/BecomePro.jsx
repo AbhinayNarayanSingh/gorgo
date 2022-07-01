@@ -5,9 +5,9 @@ const BecomePro = () => {
   return (
     <div className="sidebar-content-container">
       <div className="become-pro-member">
-        <h2>{t("Become Pro")}</h2>
-        <p>{t("Become_Pro_Details")}</p>
-        <button>{t("Upgrade Now")}</button>
+        <h2>{t("become_pro")}</h2>
+        <p>{t("become_pro_details")}</p>
+        <button>{t("upgrade_now")}</button>
       </div>
     </div>
   );

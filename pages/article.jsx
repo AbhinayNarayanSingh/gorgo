@@ -22,7 +22,7 @@ import {
 } from "react-share";
 import SocialMediaShare from "../components/SocialMediaShare";
 
-const article = () => {
+const Article = () => {
   // instance
   const dispatch = useDispatch();
   const router = useRouter();
@@ -190,4 +190,4 @@ const article = () => {
   );
 };
 
-export default article;
+export default Article;

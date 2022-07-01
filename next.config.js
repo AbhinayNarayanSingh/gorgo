@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const nextTranslate = require("next-translate");
+
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -8,6 +10,15 @@ const nextConfig = {
       "ommcom.s3.ap-south-1.amazonaws.com",
     ],
   },
+
+  locales: ["en", "hi", "es"],
+  defaultLocale: "en",
 };
 
 module.exports = nextConfig;
+
+module.exports = nextTranslate({
+  webpack: (config, { isServer, webpack }) => {
+    return config;
+  },
+});

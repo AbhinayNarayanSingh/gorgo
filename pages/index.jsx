@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Link from "next/link";
 
+import useTranslation from "next-translate/useTranslation";
+
+// action
 import { homePagePostGETAction } from "../redux/actions/homePageActions";
 
 // component
@@ -34,6 +37,9 @@ const Home = () => {
   useEffect(() => {
     dispatch(homePagePostGETAction(page));
   }, [dispatch, page]);
+
+  const { t } = useTranslation("common");
+
   return (
     <div id="home_page">
       <Header title="Home" />
@@ -92,12 +98,9 @@ const Home = () => {
               </div>
 
               <div className="promotion-cover-banner">
-                <h2>Get Unlimited Access Now </h2>
-                <p>
-                  Get unlimited access to the best articles on Gorgo and support
-                  our lovely authors by subscribing to the PRO or VIP package.
-                </p>
-                <button className="btn-primary">Upgrade Now</button>
+                <h2>{t("Get Unlimited Access Now")}</h2>
+                <p>{t("Get_Unlimited_Access_Now_Detail")}</p>
+                <button className="btn-primary">{t("Upgrade Now")}</button>
               </div>
 
               <div className="section-2">
@@ -169,9 +172,10 @@ const Home = () => {
         style={{ background: "#F5F6F7", padding: "1rem" }}
       >
         <div className="container focus-content">
-          <h2>Focus on your content</h2>
+          <h2>{t("Focus on your content")}</h2>
           <p>
-            Discover the little things that <span>matter to you.</span>
+            {t("Discover the little things that")}
+            <span> {t("matter to you")}</span>
           </p>
           <div className="content-type-container">
             {contentType &&
@@ -192,9 +196,9 @@ const Home = () => {
 
       <div className="section-4 container-fluid">
         <div className="container">
-          <h2>The heart of Gorgo Community </h2>
+          <h2>{t("The heart of Gorgo Community")}</h2>
           <p>
-            Some of Our Popular <span>Authors</span>
+            {t("Some of Our Popular")} <span>{t("Authors")}</span>
           </p>
           <div className="row">
             {author &&
@@ -205,8 +209,8 @@ const Home = () => {
         </div>
       </div>
       <HeroFooter
-        h2="Reading is essential for those who seek to rise "
-        span="above the ordinary"
+        h2={t("Reading is essential for those who seek to rise")}
+        span={t("above the ordinary")}
         link="/"
       />
       <Footer />

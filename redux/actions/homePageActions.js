@@ -3,6 +3,8 @@ import * as constant from "../constants/homePageConstants";
 import { takeEvery, call, put } from "redux-saga/effects";
 import { get } from "../../utils/request";
 
+const lang = "en";
+
 // Action
 export const homePagePostGETAction = (page) => {
   return { type: "GET_HOME_PAGE_POST", page };
@@ -17,7 +19,7 @@ export function* workerHomePagePostGET(page) {
     yield put({ type: constant.POST_GET_INITIATE });
 
     const hero = yield call(() => {
-      return get("top-headlines?language=en&pageSize=5&sortBy=popularity");
+      return get(`top-headlines?language=${lang}&pageSize=5&sortBy=popularity`);
     });
 
     yield put({
@@ -26,7 +28,7 @@ export function* workerHomePagePostGET(page) {
     });
 
     const feature = yield call(() => {
-      return get("top-headlines?country=us&language=en&pageSize=2");
+      return get(`top-headlines?country=us&language=${lang}&pageSize=2`);
     });
 
     yield put({
@@ -36,7 +38,7 @@ export function* workerHomePagePostGET(page) {
 
     const post = yield call(() => {
       return get(
-        `top-headlines?country=in&language=en&pageSize=10&page=${page}`
+        `top-headlines?country=in&language=${lang}&pageSize=10&page=${page}`
       );
     });
 

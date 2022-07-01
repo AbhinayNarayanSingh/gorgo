@@ -23,7 +23,7 @@ export const postGetReducer = (state = initialState, action) => {
       return { ...state, status: "error", error: action.payload };
 
     case constant.POST_GET_INITIATE:
-      return { ...state, status: "initiate" };
+      return { ...state, status: "initiate", post: [] };
     case constant.POST_GET_SCUCESS:
       return {
         ...state,

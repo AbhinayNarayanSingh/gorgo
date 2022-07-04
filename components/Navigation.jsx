@@ -59,6 +59,7 @@ const Navigation = () => {
                     </li>
                   );
                 })}
+              <li>Light</li>
             </ul>
           </div>
 
